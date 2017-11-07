@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Zuel MultiSwitch</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
+
+    <ion-slide style="background: url('assets/imgs/beleuchtung.jpg')  no-repeat; background-size: 100%  100%"> 
+      <div style="margin-top:90%">
+        <p>Steuern sie ihre Beleuchtung bequem vom Sofa aus mit dem Smartphone.</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide style="background: url('assets/imgs/luftbefeuchter.jpg') no-repeat; background-size: 90% 70%; top: 10%; opacity: 0.5">
+    <div style="margin-top:90% ">
+      <p>Schalten sie ihren Luftbefeuchter per Zeitplan und sie sorgen damit für ein angenehmes Raumklima.</p>
+      </div>  
+    </ion-slide>
+
+     <ion-slide style="background: url('assets/imgs/heizung.jpg') no-repeat; background-size: 90% 70%; top: 10%"> 
+     <div style="margin-top:90%" >
+     <p>Schalten sie die Heizung genau dann ein wenn die Raumtemperatur unter den Wohlfühl Wert fällt.</p>
+    </div> 
+    </ion-slide>
+
+    <button (click)="skip()" id="skip">{{ skipMsg }} margin-top: 15px</button>
+    
+  </ion-slides>
+</ion-content>
+
+  

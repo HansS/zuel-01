@@ -1,0 +1,50 @@
+export default  [
+    {id: 1, name: "light", displayname: "Beleuchtung", isweekplan: false, sensorweek:[
+        { sensor: "light", day: "Mo",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "light", day: "Mo",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "light", day: "Di",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "light", day: "Di",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "light", day: "Mi",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "light", day: "Mi",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "light", day: "Do",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "light", day: "Do",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "light", day: "Fr",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "light", day: "Fr",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "light", day: "Sa",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "light", day: "Sa",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "light", day: "So",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "light", day: "So",fromtime: "00:00", totime: "23:59", setvalue: 1}
+    ]},
+    {id: 2, name: "humidity", displayname: "Luftbefeuchter", isweekplan: false, sensorweek: [
+        { sensor: "humidity", day: "Mo",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "humidity", day: "Mo",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "humidity", day: "Di",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "humidity", day: "Di",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "humidity", day: "Mi",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "humidity", day: "Mi",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "humidity", day: "Do",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "humidity", day: "Do",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "humidity", day: "Fr",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "humidity", day: "Fr",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "humidity", day: "Sa",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "humidity", day: "Sa",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "humidity", day: "So",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "humidity", day: "So",fromtime: "00:00", totime: "23:59", setvalue: 1}
+    ]},
+    {id: 1, name: "temperature", displayname: "Heizung", isweekplan: false, sensorweek: [
+        { sensor: "temperature", day: "Mo",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "temperature", day: "Mo",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "temperature", day: "Di",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "temperature", day: "Di",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "temperature", day: "Mi",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "temperature", day: "Mi",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "temperature", day: "Do",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "temperature", day: "Do",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "temperature", day: "Fr",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "temperature", day: "Fr",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "temperature", day: "Sa",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "temperature", day: "Sa",fromtime: "00:00", totime: "23:59", setvalue: 1},
+        { sensor: "temperature", day: "So",fromtime: "00:00", totime: "23:59", setvalue: 0},
+        { sensor: "temperature", day: "So",fromtime: "00:00", totime: "23:59", setvalue: 1}  
+    ]}
+]

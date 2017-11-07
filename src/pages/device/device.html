@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>LightSwitch</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item (click)="addSensors()">
+      <ion-icon name="add" item-start></ion-icon>
+      Gerät einstellen
+    </ion-item>
+    <ion-item>
+      <ion-icon name="refresh" item-start></ion-icon>
+      Einstellungen von Gerät laden
+    </ion-item>
+    <ion-item>
+      <ion-icon name="book" item-start></ion-icon>
+      Einstellungen von Bibliothek laden
+    </ion-item>
+  </ion-list>
+</ion-content>

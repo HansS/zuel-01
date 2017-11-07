@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Beleuchtung</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-toggle item-start [(ngModel)]="sensor.isweekplan" name="isweekplan"></ion-toggle>
+      <ion-label>Zeitplan erstellen</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid *ngIf="sensor.isweekplan" >
+    <!--- Header Row -->
+    <ion-row>
+      <ion-col width-25>
+        <ion-item>
+          Tag
+        </ion-item>
+      </ion-col>
+      <ion-col width-25>
+          <ion-item>
+              Von
+            </ion-item>
+      </ion-col>
+      <ion-col width-25>
+          <ion-item>
+              Bis
+            </ion-item>
+      </ion-col>
+      <ion-col width-25>
+          <ion-item>
+              Wert
+            </ion-item>
+      </ion-col>
+    </ion-row>
+    <!--- Header Row -->
+
+        <!--- Data Rows -->
+        <ion-row *ngFor="let day of sensor.sensorweek" >
+            <ion-col width-25>
+              <ion-item>
+                {{ day.day }}
+              </ion-item>
+            </ion-col>
+            <ion-col width-25>
+                <ion-item>
+                    {{ day.fromtime }}
+                  </ion-item>
+            </ion-col>
+            <ion-col width-25>
+                <ion-item>
+                    {{ day.totime }}
+                  </ion-item>
+            </ion-col>
+            <ion-col width-25>
+                <ion-item>
+                    {{ day.setvalue }}
+                  </ion-item>
+            </ion-col>
+          </ion-row>
+          <!--- Data Rows -->
+  </ion-grid>
+</ion-content>
