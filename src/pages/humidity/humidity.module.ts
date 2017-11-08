@@ -9,5 +9,6 @@ import { HumidityPage } from './humidity';
   imports: [
     IonicPageModule.forChild(HumidityPage),
   ],
+  exports: [ HumidityPage ]
 })
 export class HumidityPageModule {}

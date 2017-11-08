@@ -8,6 +8,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 })
 export class SensorsPage {
 
+  deviceRoot = 'DevicePage'
   lightRoot = 'LightPage'
   humidityRoot = 'HumidityPage'
   temperatureRoot = 'TemperaturePage'
@@ -15,4 +16,5 @@ export class SensorsPage {
 
   constructor(public navCtrl: NavController) {}
 
-}
+
+} // class

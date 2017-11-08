@@ -10,6 +10,109 @@
 </ion-header>
 
 
-<ion-content padding>
 
+<ion-content padding>
+  <!--
+    <ion-list>
+  
+      <ion-item>
+        <ion-label>Steuerung</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Verschieben in Minuten</ion-label>
+        <ion-input type="number"></ion-input>
+        <ion-icon name="watch" item-start></ion-icon>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Zufällig verschieben </ion-label>
+        <ion-toggle [(ngModel)]="sensor.israndom" item-end>Zufall</ion-toggle>
+        <ion-icon name="sync" item-start></ion-icon>
+      </ion-item>
+  -->
+  <ion-list>
+      <ion-item>
+          <ion-label>Aktueller Wert</ion-label>
+          <ion-label>{{ sensor.currentValue.sensorvalue} }</ion-label>
+          <ion-icon name="water" item-start></ion-icon>
+        </ion-item>
+    <ion-item>
+      <ion-label>Werte speichern</ion-label>
+      <ion-toggle [(ngModel)]="sensor.ishistory" item-end></ion-toggle>
+      <ion-icon name="apps" item-start></ion-icon>
+    </ion-item>
+
+    <ion-item *ngIf="sensor.ishistory">
+      <ion-label>Gespeicherte Werte</ion-label>
+      <ion-icon name="clipboard" item-start></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="sensor.ishistory">
+    <ion-item *ngFor="let val of sensor.history ">
+      <p>{{ val.datetime }} {{ val.sensorvalue }} </p>
+      <ion-icon item-start name="bulb"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-toggle item-end [(ngModel)]="sensor.isweekplan" name="isweekplan"></ion-toggle>
+      <ion-label>Zeitplan verwalten</ion-label>
+      <ion-icon item-start name="calendar"></ion-icon>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-grid *ngIf="sensor.isweekplan">
+    <!--- Header Row -->
+    <ion-row>
+      <ion-col width-25>
+        <ion-item>
+          Tag
+        </ion-item>
+      </ion-col>
+      <ion-col width-25>
+        <ion-item>
+          Von
+        </ion-item>
+      </ion-col>
+      <ion-col width-25>
+        <ion-item>
+          Bis
+        </ion-item>
+      </ion-col>
+      <ion-col width-25>
+        <ion-item>
+          Wert
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!--- Header Row -->
+
+    <!--- Data Rows -->
+    <ion-row *ngFor="let day of sensor.sensorweek">
+      <ion-col width-25>
+        <ion-item>
+          {{ day.day }}
+        </ion-item>
+      </ion-col>
+      <ion-col width-25>
+        <ion-item>
+          {{ day.fromtime }}
+        </ion-item>
+      </ion-col>
+      <ion-col width-25>
+        <ion-item>
+          {{ day.totime }}
+        </ion-item>
+      </ion-col>
+      <ion-col width-25>
+        <ion-item>
+          {{ day.setvalue }}
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!--- Data Rows -->
+  </ion-grid>
 </ion-content>

@@ -21,6 +21,7 @@ import { ReceipeDetailsPageModule } from '../pages/receipes/receipe-details/rece
 import { AppinfoPageModule } from '../pages/appinfo/appinfo.module';
 import { LogPageModule } from '../pages/log/log.module';
 import { SensorService } from '../pages/sensor/sensor.service';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { SensorService } from '../pages/sensor/sensor.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ReceipeService,
-    SensorService
+    SensorService,
+    NativeStorage
   ]
 })
 export class AppModule {}

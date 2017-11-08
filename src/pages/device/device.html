@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>LightSwitch</ion-title>
+    <ion-title>{{ device.devicename }}</ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -12,17 +12,33 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item (click)="addSensors()">
+    <ion-item *ngIf="device.isconnected" >
+      <ion-icon name="radio-button-on" item-start></ion-icon>
+      <ion-label> Gerät verbunden</ion-label>
+    </ion-item>
+    <ion-item *ngIf="!device.isconnected" >
+      <ion-icon name="radio-button-off" item-start></ion-icon>
+      <ion-label> Gerät nicht verbunden</ion-label>
+      <ion-toggle [(ngModel)]="device.isconnected"  item-end>Verbinden</ion-toggle>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <!--
+    <ion-item *ngIf="device.isconnected"  (click)="addSensors()">
       <ion-icon name="add" item-start></ion-icon>
       Gerät einstellen
+    </ion-item> -->
+    <ion-item *ngIf="device.isconnected">
+      <ion-label>Einstellungen</ion-label>
     </ion-item>
-    <ion-item>
+
+    <ion-item *ngIf="device.isconnected">
       <ion-icon name="refresh" item-start></ion-icon>
-      Einstellungen von Gerät laden
+      von Gerät laden
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="device.isconnected">
       <ion-icon name="book" item-start></ion-icon>
-      Einstellungen von Bibliothek laden
+      von Bibliothek laden
     </ion-item>
   </ion-list>
 </ion-content>

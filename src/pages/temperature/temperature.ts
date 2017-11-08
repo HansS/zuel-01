@@ -1,12 +1,8 @@
+import { Sensorhistory } from './../sensor/sensorhistory.interface';
+import { Sensor } from './../sensor/sensor.interface';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the TemperaturePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { SensorService } from '../sensor/sensor.service';
 
 @IonicPage()
 @Component({
@@ -14,8 +10,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'temperature.html',
 })
 export class TemperaturePage {
+  sensor: Sensor;
+  sensortype = 'temperature';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private service: SensorService) {
+
+    this.sensor = this.service.getSensorData(this.sensortype);
+
   }
 
   ionViewDidLoad() {

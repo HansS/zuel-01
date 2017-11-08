@@ -1,5 +1,5 @@
 export interface Sensorplan {
-    sensor: string;
+    sensortype: string;
     day: string;
     fromtime: string;
     totime: string;

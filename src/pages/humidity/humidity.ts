@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the HumidityPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Sensor } from '../sensor/sensor.interface';
+import { SensorService } from '../sensor/sensor.service';
+import { Sensorhistory } from '../sensor/sensorhistory.interface';
 
 @IonicPage()
 @Component({
@@ -15,7 +11,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HumidityPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  sensor: Sensor;
+  //sensor: Sensor;
+  sensortype = 'humidity';
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private service: SensorService) {
+
+    this.sensor = this.service.getSensorData(this.sensortype);
   }
 
   ionViewDidLoad() {
