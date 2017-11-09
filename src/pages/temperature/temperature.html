@@ -30,10 +30,31 @@
       </ion-item>
   -->
   <ion-list>
-
     <ion-item>
+      <ion-label>Zustand</ion-label>
+      <ion-toggle item-end [(ngModel)]="sensor.ison" (ionChange)="onUpdateToggle($event)" ></ion-toggle>
+      {{ currentvalue.sensorvalue }}
+    </ion-item>
+
+    <ion-item *ngIf="sensor.ison">
+      <ion-label>{{ sensor.displayname }} an</ion-label>
+      <ion-icon name="thermometer" item-start></ion-icon>
+    </ion-item>
+
+    <ion-item *ngIf="!sensor.ison">
+      <ion-label>{{ sensor.displayname }} aus</ion-label>
+      <ion-icon name="hangout" item-start></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+
+    <ion-item *ngIf="sensor.ison">
       <ion-label>Aktueller Wert</ion-label>
-      <ion-label>{{ sensor.currentValue.sensorvalue} }</ion-label>
+    </ion-item>
+    
+    <ion-item *ngIf="sensor.ison">
+      <ion-label>{{ currentvalue.datetime }} - {{ currentvalue.sensorvalue}}</ion-label>
       <ion-icon name="thermometer" item-start></ion-icon>
     </ion-item>
 
@@ -53,7 +74,7 @@
   <ion-list *ngIf="sensor.ishistory">
     <ion-item *ngFor="let val of sensor.history ">
       <p>{{ val.datetime }} {{ val.sensorvalue }} </p>
-      <ion-icon item-start name="bulb"></ion-icon>
+      <ion-icon item-start name="thermometer"></ion-icon>
     </ion-item>
   </ion-list>
 

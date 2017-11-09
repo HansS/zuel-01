@@ -5,8 +5,8 @@ export default  [
     currentvalue: {datetime:'08.11.2017 11:00:00', sensorvalue: 1},
     ishistory: false,
     history: [
-            {datetime:'08.11.2017 11:00:00', sensorvalue: 15},
-            {datetime:'08.11.2017 11:00:00', sensorvalue: 15}
+            {datetime:'08.11.2017 11:00:00', sensorvalue: 0},
+            {datetime:'09.11.2017 11:00:00', sensorvalue: 1}
 ] , 
     isweekplan: false, 
     sensorweek:[
@@ -30,7 +30,11 @@ export default  [
     ison: false,
     currentvalue: {datetime:'08.11.2017 11:00:00', sensorvalue: 45},
     ishistory: false,
-    history: [{datetime:'08.11.2017 11:10:00', sensorvalue: 25}],
+    history: [
+        {datetime:'08.11.2017 11:10:00', sensorvalue: 25},
+        {datetime:'07.11.2017 11:10:00', sensorvalue: 24},
+        {datetime:'06.11.2017 11:10:00', sensorvalue: 23}
+    ],
     isweekplan: false, 
     sensorweek: [
         { sensortype: "humidity", day: "Mo",fromtime: "00:00", totime: "23:59", setvalue: 0},
@@ -53,7 +57,11 @@ export default  [
     ison: false,
     currentvalue: {datetime:'08.11.2017 11:00:00', sensorvalue: 25},
     ishistory: false,
-    history: [{datetime:'08.11.2017 11:20:00', sensorvalue: 35}],
+    history: [
+        {datetime:'08.11.2017 11:20:00', sensorvalue: 15},
+        {datetime:'07.11.2017 11:20:00', sensorvalue: 16},
+        {datetime:'06.11.2017 11:20:00', sensorvalue: 17}
+],
     isweekplan: false,
     sensorweek: [
         { sensortype: "temperature", day: "Mo",fromtime: "00:00", totime: "23:59", setvalue: 0},
