@@ -1,3 +1,4 @@
+import { DeviceListPage } from './../pages/device-list/device-list';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -12,6 +13,7 @@ import { DevicePage } from '../pages/device/device';
 import { AppinfoPage } from './../pages/appinfo/appinfo';
 import { SettingsPage } from './../pages/settings/settings';
 import { SensorsPage } from './../pages/sensors/sensors';
+import { DeviceDetailsPage } from '../pages/device-details/device-details';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,9 +32,11 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Zuel MultiSwitch', component: HomePage },
-      { title: 'Gerät verbinden', component: DevicePage },
-      { title: 'Gerät einstellen', component: SensorsPage },
-      //{ title: 'Messwerte aufzeichnen', component: LogPage },
+      { title: 'Gerät verbinden', component: DeviceListPage },
+      { title: 'Gerät verbinden - alt', component: DevicePage },
+      { title: 'Gerät einstellen', component: DeviceDetailsPage },
+      { title: 'Gerät einstellen - alt', component: SensorsPage },
+      { title: 'Messwerte aufzeichnen - ist evtl nicht nötig', component: LogPage },
       { title: 'App Einstellungen', component: SettingsPage },
       { title: 'App Info', component: AppinfoPage },
       { title: 'Intro', component: IntroPage }

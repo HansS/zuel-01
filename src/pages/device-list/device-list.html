@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      Gerät verbinden
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngIf="!isBluetooth" >
+      <button outline ion-button (click)="checkBluetoothAvailable()">Bluetooth Aktivieren</button>
+    </ion-item>
+
+    <ion-item *ngIf="isBluetooth">
+      <ion-icon name="bluetooth"></ion-icon>
+      Bluetooth ist verfügbar
+    </ion-item>
+    <ion-item *ngIf="!isBluetooth">
+      <ion-label color="danger">Aktivieren sie Bluetooth!</ion-label>
+    </ion-item>
+    
+    <ion-item *ngIf="isBluetooth">
+      <button ion-button (click)="scan()">
+        Gerät verbinden
+      </button>
+    </ion-item>
+    
+  </ion-list>
+
+  <ion-list>
+    <button ion-item *ngFor="let device of devices">
+      <h2>{{ device.name || 'Unnamed' }}</h2>
+      <p>{{ device.id }}</p>
+      <p>RSSI: {{ device.rssi }}</p>
+    </button>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <p>{{ statusMessage }}</p>
+  </ion-toolbar>
+</ion-footer>

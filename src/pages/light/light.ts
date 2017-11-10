@@ -15,25 +15,17 @@ import { SensorService } from './../sensor/sensor.service';
 export class LightPage implements OnInit {
 
   sensor: Sensor;
-  //sensor: Sensor;
   sensortype = 'light';
   currentvalue: Sensorhistory;
-  //sensorhistory: Sensorhistory[];
 
   constructor(public navCtrl: NavController,
+
     public navParams: NavParams,
-    private service: SensorService) {
 
+    private service: SensorService) { }
 
-    //this.sensor = this.sensordata[0];
-    //this.sensorhistory = this.sensordata.history;
-    //console.log('light.sensorhistory:',this.sensorhistory);
-
-
-  }
   ngOnInit() {
     this.sensor = this.service.getSensorData(this.sensortype);
-    //this.currentvalue = { datetime: '08.11.2017 17:00:00', sensorvalue: 22 };
     this.currentvalue = this.sensor.history[0];
   }
   onUpdateToggle(event) {
