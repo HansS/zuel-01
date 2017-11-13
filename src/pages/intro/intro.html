@@ -1,23 +1,32 @@
-<ion-header>
-  <ion-navbar>
+<ion-header >
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Zuel MultiSwitch</ion-title>
+    <ion-title style="margin-left: 45px">MultiSwitch</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
 
-  <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
+  <ion-slides  (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
 
-    <ion-slide style="background: url('assets/imgs/beleuchtung.jpg')  no-repeat; background-size: 100%  100%"> 
+    <ion-slide padding style="background: url('assets/imgs/beleuchtung.jpg')  no-repeat; background-size: 100%  100%"> 
       <div style="margin-top:90%">
-        <p>Steuern sie ihre Beleuchtung bequem vom Sofa aus mit dem Smartphone.</p>
+        <ion-list>
+          <ion-card style="background-color: lightblue" >
+          <ion-card-title> Zürcher Elektronik</ion-card-title>
+            <ion-card-content>
+              <p>Tobias Zürcher</p>
+              <p>Elektronik Ingenieur und Inhaber</p>
+            </ion-card-content>
+            
+          </ion-card>
+        </ion-list>
       </div>
     </ion-slide>
-
+<!-- 
     <ion-slide style="background: url('assets/imgs/luftbefeuchter.jpg') no-repeat; background-size: 90% 70%; top: 10%; opacity: 0.5">
     <div style="margin-top:90% ">
       <p>Schalten sie ihren Luftbefeuchter per Zeitplan und sie sorgen damit für ein angenehmes Raumklima.</p>
@@ -31,7 +40,7 @@
     </ion-slide>
 
     <button (click)="skip()" id="skip">{{ skipMsg }} margin-top: 15px</button>
-    
+     -->
   </ion-slides>
 </ion-content>
 

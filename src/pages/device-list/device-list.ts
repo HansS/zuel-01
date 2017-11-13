@@ -1,8 +1,10 @@
-import { DeviceDetailsPage } from './../device-details/device-details';
 import { Component, NgZone, } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { BLE } from '@ionic-native/ble';
+
+import { DeviceService } from '../device/device.service';
+import { DeviceDetailsPage } from './../device-details/device-details';
 
 @Component({
   selector: 'page-device-list',
@@ -12,10 +14,12 @@ export class DeviceListPage {
 
   devices: any[] = [];
   isBluetooth = false;
+  isDevice = false;
   statusMessage: string;
 
   constructor(public navCtrl: NavController,
     private toastCtrl: ToastController,
+    private service: DeviceService,
     private ble: BLE,
     private ngZone: NgZone) {
 
@@ -24,7 +28,7 @@ export class DeviceListPage {
   ionViewDidEnter() {
     console.log('ionViewDidEnter');
     setTimeout(this.checkForBluetooth.bind(this), 1000);
-    this.scan();
+    //this.scan();
   }
 
   checkBluetoothAvailable() {
@@ -47,18 +51,15 @@ export class DeviceListPage {
     this.devices = [];  // clear list
 
     this.ble.scan([], 5).subscribe(
-      device => this.onDeviceDiscovered(device),
-      error => this.scanError(error)
-    );
+      device => { this.onDeviceDiscovered(device);},
+      error => this.scanError(error));
 
     setTimeout(this.setStatus.bind(this), 5000, 'Scan complete');
   }
 
   onDeviceDiscovered(device) {
     console.log('Discovered ' + JSON.stringify(device, null, 2));
-    this.ngZone.run(() => {
-      this.devices.push(device);
-    });
+    this.ngZone.run(() => {this.devices.push(device);});
   }
 
   // If location permission is denied, you'll end up here
@@ -82,9 +83,8 @@ export class DeviceListPage {
 
   deviceSelected(device) {
     console.log(JSON.stringify(device) + ' selected');
-    this.navCtrl.push(DeviceDetailsPage, {
-      device: device
-    });
+    this.setStatus(JSON.stringify(device));
+    this.navCtrl.push(DeviceDetailsPage, { device: device});
 
   }
 } // class

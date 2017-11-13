@@ -11,6 +11,7 @@ export class DeviceDetailsPage {
 
   peripheral: any = {};
   statusMessage: string;
+  device: any;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
@@ -18,20 +19,22 @@ export class DeviceDetailsPage {
               private toastCtrl: ToastController,
               private ngZone: NgZone) {
 
-    let device = navParams.get('device');
+    //let device = navParams.get('device');
+    this.device = navParams.get('device');
 
-    this.setStatus('Connecting to ' + device.name || device.id);
+    //this.setStatus('Connecting to ' + device.name || device.id);
+    this.setStatus('Connecting to ' + JSON.stringify(this.device));
 
-    this.ble.connect(device.id).subscribe(
-      peripheral => this.onConnected(peripheral),
+    this.ble.connect(this.device.id).subscribe(
+      peripheral => this.onDeviceConnected(peripheral),
       peripheral => this.onDeviceDisconnected(peripheral)
     );
 
   }
 
-  onConnected(peripheral) {
+  onDeviceConnected(peripheral) {
     this.ngZone.run(() => {
-      this.setStatus('');
+      this.setStatus('Device connected');
       this.peripheral = peripheral;
     });
   }

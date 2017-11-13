@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { IntroPage } from './../pages/intro/intro';
-import { ReceipesPage } from "../pages/receipes/receipes";
+import { ReceipesPage } from '../pages/receipes/receipes';
 import { ReceipeTabsPage } from '../pages/receipes/receipe-tabs/receipe-tabs';
 import { LogPage } from '../pages/log/log';
 import { DevicePage } from '../pages/device/device';
@@ -31,7 +31,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Zuel MultiSwitch', component: HomePage },
+      { title: 'MultiSwitch', component: HomePage },
       { title: 'Gerät verbinden', component: DeviceListPage },
       { title: 'Gerät verbinden - alt', component: DevicePage },
       { title: 'Gerät einstellen', component: DeviceDetailsPage },
@@ -40,6 +40,7 @@ export class MyApp {
       { title: 'App Einstellungen', component: SettingsPage },
       { title: 'App Info', component: AppinfoPage },
       { title: 'Intro', component: IntroPage }
+      //{ title: 'Receipes', component: ReceipesPage }
     ];
 
   }
