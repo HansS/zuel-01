@@ -1,7 +1,7 @@
 import { OnInit } from "@angular/core";
-import { Sensorhistory } from './../sensor/sensorhistory.interface';
+import { SensorValue } from './../sensor/sensorvalue.interface';
 import { Sensor } from '../sensor/sensor.interface';
-import { Sensorplan } from './../sensor/sensorplan.interface';
+import { SensorPlan } from './../sensor/sensorplan.interface';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -16,7 +16,7 @@ export class LightPage implements OnInit {
 
   sensor: Sensor;
   sensortype = 'light';
-  currentvalue: Sensorhistory;
+  sensorvalue: SensorValue;
 
   constructor(public navCtrl: NavController,
 
@@ -26,7 +26,7 @@ export class LightPage implements OnInit {
 
   ngOnInit() {
     this.sensor = this.service.getSensorData(this.sensortype);
-    this.currentvalue = this.sensor.history[0];
+    //this.sensorvalue = this.sensor.sensorvalue;
   }
   onUpdateToggle(event) {
     console.log('checked:', event.checked);

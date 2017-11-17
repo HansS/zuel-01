@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Sensor } from '../sensor/sensor.interface';
 import { SensorService } from '../sensor/sensor.service';
-import { Sensorhistory } from '../sensor/sensorhistory.interface';
+import { SensorValue } from '../sensor/sensorvalue.interface';
 
 @IonicPage()
 @Component({
@@ -14,7 +14,7 @@ export class HumidityPage implements OnInit {
   sensor: Sensor;
   //sensor: Sensor;
   sensortype = 'humidity';
-  currentvalue: Sensorhistory;
+  sensorvalue: SensorValue;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -27,7 +27,7 @@ export class HumidityPage implements OnInit {
   ngOnInit() {
     this.sensor = this.service.getSensorData(this.sensortype);
     //this.currentvalue = { datetime: '08.11.2017 17:00:00', sensorvalue: 20 };
-    this.currentvalue = this.sensor.history[0];
+   // this.sensorvalue = this.sensor.sensorvalue;
   }
 
   onUpdateToggle(event) {

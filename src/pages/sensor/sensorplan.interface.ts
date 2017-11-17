@@ -1,7 +1,8 @@
-export interface Sensorplan {
+import { SensorDay } from './sensorday.interface';
+export interface SensorPlan {
+    planname?: string;
     sensortype: string;
-    day: string;
-    fromtime: string;
-    totime: string;
-    setvalue: number;
+    setvalue: number;  
+    schedule?: string;
+    days: SensorDay[];
 }

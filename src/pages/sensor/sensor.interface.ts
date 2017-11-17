@@ -1,20 +1,17 @@
-import { Sensorhistory } from './sensorhistory.interface';
-import { Sensorplan } from './sensorplan.interface';
+import { Offset } from './sensorday.interface';
+import { SensorType } from './sensortype.interface';
+import { SensorValue } from './sensorvalue.interface';
+import { SensorPlan } from './sensorplan.interface';
 
 export interface Sensor {
     id: number;
-    sensortype: string;
-    sensorunit?: string;
-    sensorparam: string;
     uuid?: string;
-    displayname: string;
-    offset?: number,
-    israndom?: boolean,
-    ison?: boolean;
-    currentvalue?: Sensorhistory;
-    ishistory?: boolean;
-    history?: Sensorhistory[]
-    isweekplan: boolean;
-    sensorweek: Sensorplan[]
+    sensortype: SensorType;
+    ison: boolean;
+    sensorvalue?: SensorValue; // actual value  from sensor not logged
+    isplan: boolean;
+    sensorplan: SensorPlan[]
+    islog: boolean
+    sensorvalues: SensorValue[]
 
 }

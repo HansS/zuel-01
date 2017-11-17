@@ -1,4 +1,4 @@
-import { Sensorhistory } from './../sensor/sensorhistory.interface';
+import { SensorValue } from './../sensor/sensorvalue.interface';
 import { Sensor } from './../sensor/sensor.interface';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -12,7 +12,7 @@ import { SensorService } from '../sensor/sensor.service';
 export class TemperaturePage {
   sensor: Sensor;
   sensortype = 'temperature';
-  currentvalue: Sensorhistory;
+  sensorvalue: SensorValue;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -20,7 +20,7 @@ export class TemperaturePage {
 
     this.sensor = this.service.getSensorData(this.sensortype);
     //this.currentvalue = { datetime: '08.11.2017 17:00:00', sensorvalue: 20 };
-    this.currentvalue = this.sensor.history[0];
+    //this.sensorvalue = this.sensor.sensorvalue;
 
   }
   onUpdateToggle(event) {
