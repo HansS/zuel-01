@@ -9,7 +9,7 @@ import sensordata from "./sensor.data";
 @Injectable()
 export class SensorService {
 
-  sensors: Sensor[];
+  sensors: any;
   //sensorhistory: Sensorhistory[];
 
   constructor(private storage: NativeStorage,
@@ -17,10 +17,11 @@ export class SensorService {
     private alertCtrl: AlertController) {
 
     this.sensors = sensordata;
+    console.dir(sensordata);
 
   }
   getSensorData(type: string): Sensor {
-    let data = this.sensors.filter(s => s.sensortype === type);
+    let data = this.sensors.filter(s => s.sensortype.name === type);
     return data[0];
   }
 

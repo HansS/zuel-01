@@ -3,134 +3,49 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Beleuchtung</ion-title>
+    <ion-title>Gerät einstellen</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-
-  <ion-list>
-    <ion-item>
-      Sensor id:{{ sensor.id }}
+ <ion-list>
+    <ion-item item-start>
+      <ion-label>Mit Zeitplan {{ sensor.isplan}}</ion-label>
     </ion-item>
-    <ion-item>
-      <ion-label>Zustand</ion-label>
-      <ion-toggle item-end [(ngModel)]="sensorvalue" (ionChange)="onUpdateToggle($event)" ></ion-toggle>
-      {{ sensorvalue }}
-    </ion-item>
-
-    <ion-item *ngIf="sensor">
-      <ion-label>Licht an</ion-label>
-      <ion-icon name="bulb" item-start></ion-icon>
-    </ion-item>
-
-    <ion-item *ngIf="!sensor">
-      <ion-label>Licht aus</ion-label>
-      <ion-icon name="hangout" item-start></ion-icon>
+    <ion-item item-start>
+      <ion-label>Wiederholen {{ sensor.scheduletype}}</ion-label>
     </ion-item>
   </ion-list>
+   
+ <ion-slides pager >
+    <ion-slide *ngFor="let d of sensor.sensorplan.days">
+      <ion-fab right >
+        <button ion-fab color="primary" (click)="addDayplan()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-fab>
+      {{ d.day }}
+      <ion-grid>
+        <ion-row *ngFor="let dp of d.dayplan">
+          <pre></pre>
+            <ion-col width-50>
+              <ion-item>
+                {{ dp.setstarttime }}
+              </ion-item>
+            </ion-col>
+            <ion-col width-50>
+                <ion-item>
+                  {{dp.setendtime }}
+                  </ion-item>
+            </ion-col>
+          
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
 
-  <ion-list>
 
-    <ion-item>
-      <ion-label>Steuerung</ion-label>
-    </ion-item>
 
-    <ion-item>
-      <ion-label floating>Verschieben in Minuten</ion-label>
-      <ion-input type="number"></ion-input>
-      <ion-icon name="watch" item-start></ion-icon>
-    </ion-item>
-  <!--
-    <ion-item>
-      <ion-label>Zufällig verschieben </ion-label>
-      <ion-toggle [(ngModel)]="sensor.sensorplan" item-end>Zufall</ion-toggle>
-      <ion-icon name="sync" item-start></ion-icon>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label>Werte speichern</ion-label>
-      <ion-toggle [(ngModel)]="sensor.ishistory" item-end></ion-toggle>
-      <ion-icon name="apps" item-start></ion-icon>
-    </ion-item>
-
-    <ion-item *ngIf="sensor.ishistory">
-      <ion-label>Gespeicherte Werte</ion-label>
-      <ion-icon name="clipboard" item-start></ion-icon>
-    </ion-item>
-
-  </ion-list>
-
-    <ion-list *ngIf="sensor.ishistory">
-      <ion-item *ngFor="let val of sensor.history ">
-        <p>{{ val.datetime }} {{ val.sensorvalue }} </p>
-        <ion-icon item-start name="bulb"></ion-icon>
-      </ion-item>-->
-  </ion-list>
-
-  <ion-list>
-<ion-item>
-  <ion-label>Zeitplan</ion-label>
-</ion-item>
-    <ion-item>
-      <ion-toggle item-end [(ngModel)]="sensor" name="isplan"></ion-toggle>
-      <ion-label>Verwalten</ion-label>
-      <ion-icon item-start name="calendar"></ion-icon>
-    </ion-item>
-
-  </ion-list>
-
-  <ion-grid *ngIf="sensor">
-    <!--- Header Row -->
-    <ion-row>
-      <ion-col width-25>
-        <ion-item>
-          Tag
-        </ion-item>
-      </ion-col>
-      <ion-col width-25>
-        <ion-item>
-          Von
-        </ion-item>
-      </ion-col>
-      <ion-col width-25>
-        <ion-item>
-          Bis
-        </ion-item>
-      </ion-col>
-      <ion-col width-25>
-        <ion-item>
-          Wert
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <!--- Header Row -->
-
-    <!--- Data Rows -->
-    <ion-row *ngFor="let day of sensor.sensorweek">
-      <ion-col width-25>
-        <ion-item>
-          {{ day.day }}
-        </ion-item>
-      </ion-col>
-      <ion-col width-25>
-        <ion-item>
-          {{ day.fromtime }}
-        </ion-item>
-      </ion-col>
-      <ion-col width-25>
-        <ion-item>
-          {{ day.totime }}
-        </ion-item>
-      </ion-col>
-      <ion-col width-25>
-        <ion-item>
-          {{ day.setvalue }}
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <!--- Data Rows -->
-  </ion-grid>
 
 </ion-content>

@@ -15,6 +15,7 @@ import { SensorService } from './../sensor/sensor.service';
 export class LightPage implements OnInit {
 
   sensor: Sensor;
+  sensorplan: SensorPlan;
   sensortype = 'light';
   sensorvalue: SensorValue;
 
@@ -25,8 +26,19 @@ export class LightPage implements OnInit {
     private service: SensorService) { }
 
   ngOnInit() {
-    this.sensor = this.service.getSensorData(this.sensortype);
+    this.loadSensorData();    
     //this.sensorvalue = this.sensor.sensorvalue;
+  }
+  loadSensorData(){
+    this.sensor = this.service.getSensorData(this.sensortype);
+    this.sensorplan = this.sensor.sensorplan;
+    console.dir('light-oninit-sensor',this.sensor);
+    console.dir('light-oninit-sensorplan',this.sensorplan);
+
+  }
+  addDayplan(){
+    console.log('light-addDayplan');
+    
   }
   onUpdateToggle(event) {
     console.log('checked:', event.checked);
@@ -39,6 +51,7 @@ export class LightPage implements OnInit {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad LightPage');
+    //this.loadSensorData();
   }
 
 } // class

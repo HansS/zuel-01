@@ -1,5 +1,6 @@
 export interface SensorOffset {
     minutes: number;                              // how many minutes to offset
-    type: string;                                       // begin: fromtime -/+ minutes or end: totime +/- minutes
-    calc: string;                                       // + or -
+    israndom?: boolean;                         // fixed starttime and endtime or random starttime and endtime
+    offsettype: number;                         // +1 : plus offset minutes , -1: minus offset minutes
+    settype: string;                                 // starttime or endtime +/- 
 }
