@@ -1,7 +1,7 @@
 import { OnInit } from "@angular/core";
 import { SensorValue } from './../sensor/sensorvalue.interface';
 import { Sensor } from '../sensor/sensor.interface';
-import { SensorPlan } from './../sensor/sensorplan.interface';
+import { weekplan } from '../weekplan-edit/weekplan.interface';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -15,7 +15,7 @@ import { SensorService } from './../sensor/sensor.service';
 export class LightPage implements OnInit {
 
   sensor: Sensor;
-  sensorplan: SensorPlan;
+  weekplan: weekplan;
   sensortype = 'light';
   sensorvalue: SensorValue;
 
@@ -31,9 +31,9 @@ export class LightPage implements OnInit {
   }
   loadSensorData(){
     this.sensor = this.service.getSensorData(this.sensortype);
-    this.sensorplan = this.sensor.sensorplan;
+    this.weekplan = this.sensor.weekplan;
     console.dir('light-oninit-sensor',this.sensor);
-    console.dir('light-oninit-sensorplan',this.sensorplan);
+    console.dir('light-oninit-weekplan',this.weekplan);
 
   }
   addDayplan(){

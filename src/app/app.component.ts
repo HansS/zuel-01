@@ -1,13 +1,11 @@
+import { WeekplanEditPage } from './../pages/weekplan-edit/weekplan-edit';
 import { DeviceListPage } from './../pages/device-list/device-list';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
 import { IntroPage } from './../pages/intro/intro';
-import { ReceipesPage } from '../pages/receipes/receipes';
-import { ReceipeTabsPage } from '../pages/receipes/receipe-tabs/receipe-tabs';
 import { LogPage } from '../pages/log/log';
 import { DevicePage } from '../pages/device/device';
 import { AppinfoPage } from './../pages/appinfo/appinfo';
@@ -31,11 +29,11 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'MultiSwitch', component: HomePage },
       { title: 'Gerät verbinden', component: DeviceListPage },
       { title: 'Gerät verbinden - alt', component: DevicePage },
       { title: 'Gerät einstellen', component: DeviceDetailsPage },
       { title: 'Gerät einstellen - alt', component: SensorsPage },
+      { title: 'Geräteplan für Beleuchtung', component: WeekplanEditPage },
       { title: 'Messwerte aufzeichnen - ist evtl nicht nötig', component: LogPage },
       { title: 'App Einstellungen', component: SettingsPage },
       { title: 'App Info', component: AppinfoPage },

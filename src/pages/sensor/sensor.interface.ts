@@ -1,7 +1,7 @@
 import { SensorOffset } from './sensoroffset.interface';
 import { SensorType } from './sensortype.interface';
 import { SensorValue } from './sensorvalue.interface';
-import { SensorPlan } from './sensorplan.interface';
+import { WeekPlan } from '../weekplan-edit/weekplan.interface';
 
 export interface Sensor {
     id: number;
@@ -12,7 +12,7 @@ export interface Sensor {
     sensorsetvalue?: number;
     isplan: boolean;
     scheduletype: string; // daily or weekly
-    sensorplan: SensorPlan;
+    weekplan: WeekPlan;
     islog: boolean
     sensorvalues: SensorValue[]
 

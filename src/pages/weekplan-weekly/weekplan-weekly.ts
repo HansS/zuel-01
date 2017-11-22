@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the ReceipeEditPage page.
+ * Generated class for the weekplanWeeklyPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-receipe-edit',
-  templateUrl: 'receipe-edit.html',
+  selector: 'page-weekplan-weekly',
+  templateUrl: 'weekplan-weekly.html',
 })
-export class ReceipeEditPage {
+export class WeekplanWeeklyPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ReceipeEditPage');
+    console.log('ionViewDidLoad weekplanWeeklyPage');
   }
 
 }

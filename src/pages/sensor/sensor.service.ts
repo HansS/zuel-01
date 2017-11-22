@@ -22,9 +22,13 @@ export class SensorService {
   }
   getSensorData(type: string): Sensor {
     let data = this.sensors.filter(s => s.sensortype.name === type);
+    console.dir(data[0]);
+    
     return data[0];
   }
 
+  getRandomNumberFrom( minutes: number){
+  }
 } // class
 
 
