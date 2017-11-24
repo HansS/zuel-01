@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { BLE } from '@ionic-native/ble';
 
+@IonicPage()
 @Component({
   selector: 'page-device-details',
   templateUrl: 'device-details.html',

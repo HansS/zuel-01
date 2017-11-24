@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { weekplanWeeklyPage } from './weekplan-weekly';
+import { WeekplanWeeklyPage } from './weekplan-weekly';
 
 @NgModule({
   declarations: [
-    weekplanWeeklyPage,
+    WeekplanWeeklyPage,
   ],
   imports: [
-    IonicPageModule.forChild(weekplanWeeklyPage),
+    IonicPageModule.forChild(WeekplanWeeklyPage),
   ],
 })
 export class weekplanWeeklyPageModule {}

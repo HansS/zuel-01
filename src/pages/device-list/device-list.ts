@@ -3,9 +3,10 @@ import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { BLE } from '@ionic-native/ble';
 
-import { DeviceService } from '../device/device.service';
-import { DeviceDetailsPage } from './../device-details/device-details';
+//import { DeviceService } from '../device/device.service';
+//import { DeviceDetailsPage } from './../device-details/device-details';
 
+@IonicPage()
 @Component({
   selector: 'page-device-list',
   templateUrl: 'device-list.html'
@@ -19,7 +20,7 @@ export class DeviceListPage {
 
   constructor(public navCtrl: NavController,
     private toastCtrl: ToastController,
-    private service: DeviceService,
+    //private service: DeviceService,
     private ble: BLE,
     private ngZone: NgZone) {
 
@@ -84,7 +85,7 @@ export class DeviceListPage {
   deviceSelected(device) {
     console.log(JSON.stringify(device) + ' selected');
     this.setStatus(JSON.stringify(device));
-    this.navCtrl.push(DeviceDetailsPage, { device: device});
+    this.navCtrl.push('DeviceDetailsPage', { device: device});
 
   }
 } // class

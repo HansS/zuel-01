@@ -1,17 +1,23 @@
-import { WeekplanEditPage } from './../pages/weekplan-edit/weekplan-edit';
-import { DeviceListPage } from './../pages/device-list/device-list';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { IntroPage } from './../pages/intro/intro';
-import { LogPage } from '../pages/log/log';
-import { DevicePage } from '../pages/device/device';
-import { AppinfoPage } from './../pages/appinfo/appinfo';
-import { SettingsPage } from './../pages/settings/settings';
-import { SensorsPage } from './../pages/sensors/sensors';
-import { DeviceDetailsPage } from '../pages/device-details/device-details';
+//import { TemperaturePage } from './../pages/temperature/temperature';
+//import { DeviceListPage } from './../pages/device-list/device-list';
+// import { IntroPage } from './../pages/intro/intro';
+// import { LogPage } from '../pages/log/log';
+// import { DevicePage } from '../pages/device/device';
+// import { AppinfoPage } from './../pages/appinfo/appinfo';
+// import { SettingsPage } from './../pages/settings/settings';
+// import { SensorsPage } from './../pages/sensors/sensors';
+// import { DeviceDetailsPage } from '../pages/device-details/device-details';
+// import { SensorTabsPage } from '../pages/sensor-tabs/sensor-tabs';
+// import { SwitchTabsPage } from '../pages/switch-tabs/switch-tabs';
+// import { LightPage } from '../pages/light/light';
+// import { HumidityPage } from '../pages/humidity/humidity';
+// import { FanPage } from '../pages/fan/fan';
+// import { CoolerPage } from '../pages/cooler/cooler';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +26,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
 //  rootPage: any = HomePage;
-  rootPage: any = IntroPage;
+  rootPage: any = 'IntroPage';
 
   pages: Array<{title: string, component: any}>;
 
@@ -29,15 +35,15 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Gerät verbinden', component: DeviceListPage },
-      { title: 'Gerät verbinden - alt', component: DevicePage },
-      { title: 'Gerät einstellen', component: DeviceDetailsPage },
-      { title: 'Gerät einstellen - alt', component: SensorsPage },
-      { title: 'Geräteplan für Beleuchtung', component: WeekplanEditPage },
-      { title: 'Messwerte aufzeichnen - ist evtl nicht nötig', component: LogPage },
-      { title: 'App Einstellungen', component: SettingsPage },
-      { title: 'App Info', component: AppinfoPage },
-      { title: 'Intro', component: IntroPage }
+      { title: 'Gerät verbinden', component: 'DeviceListPage' },
+      { title: 'Beleuchtung', component: 'LightPage' },
+      { title: 'Heizung', component: 'TemperaturePage' },
+      { title: 'Kühlgerät', component: 'CoolerPage' },
+      { title: 'Luftftbefeuchter', component: 'HumidityPage' },
+      { title: 'Lufttrockner', component: 'FanPage' },
+      { title: 'Messwerte', component: 'LogPage' },
+      { title: 'Einstellungen', component: 'SettingsPage' },
+      { title: 'Firma ZUEL', component: 'AppinfoPage' }
       //{ title: 'Receipes', component: ReceipesPage }
     ];
 

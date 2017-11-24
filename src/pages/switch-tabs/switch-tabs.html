@@ -1,0 +1,21 @@
+<ion-tabs #switchTabs tabsPlacement="top" [selectedIndex]="tabIndex" (ionChange)="ionChanged($event)">
+    <ion-tab   [root]="beleuchtungRoot" tabTitle="Beleuchtung" tabIcon="information-circle">
+    </ion-tab>
+    <ion-tab [root]="heizungRoot" tabTitle="Heizung" tabIcon="information-circle"></ion-tab>
+    <ion-tab [root]="luftbefeuchterRoot" tabTitle="Luftbefeuchter" tabIcon="information-circle"></ion-tab>
+    <ion-tab [root]="lufttrocknerRoot" tabTitle="Lufttrockner" tabIcon="information-circle"></ion-tab>
+</ion-tabs>
+<ion-slides  (ionSlideDidChange)="slideChanged()">
+    <ion-slide>
+        <h1>Slide 1 Beleuchtung</h1>
+    </ion-slide>
+    <ion-slide>
+        <h1>Slide 2 Heizung </h1>
+    </ion-slide>
+    <ion-slide>
+        <h1>Slide 3 Luftbefeuchter</h1>
+    </ion-slide>
+    <ion-slide>
+        <h1>Slide 4 Lufttrockner</h1>
+    </ion-slide>
+</ion-slides>

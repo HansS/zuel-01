@@ -1,9 +1,9 @@
 import { Component, ViewChild, trigger, transition, style, state, animate, keyframes } from '@angular/core';
 import { NavController, Slides } from 'ionic-angular';
 //import { MainPage } from '../main/main';
-import { SensorsPage } from './../sensors/sensors';
+//import { SensorsPage } from './../sensors/sensors';
 
-
+@IonicPage()
 @Component({
   selector: 'page-intro',
   templateUrl: 'intro.html',
@@ -36,7 +36,7 @@ export class IntroPage {
   }
 
   skip() {
-    this.navCtrl.push(SensorsPage);
+    this.navCtrl.push('SensorsPage');
   }
 
   slideChanged() {
