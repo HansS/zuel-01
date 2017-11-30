@@ -8,9 +8,9 @@ export interface SensorDay {
     dayplans: [
         {
             setstarttime:  string;                         // 12:30
+            starttime:  string;                         // 12:30
             setendtime: string;                             // 20:45
-            calcstarttime:  string;                         // 12:30
-            calcendtime: string;                             // 20:45
+            endtime: string;                             // 20:45
         }
     ]
 }

@@ -11,18 +11,25 @@ import { WeekPlan } from '../weekplan/weekplan.interface';
 
 @IonicPage()
 @Component({
-  selector: 'page-light',
-  templateUrl: 'light.html',
+  selector: 'page-sensor-edit',
+  templateUrl: 'sensor-edit.html',
 })
-export class LightPage implements OnInit {
-  
-  lightForm: FormGroup;
-  sensor: Sensor;
-  weekplan: WeekPlan;
-  sensortype: SensorType;
-  sensortypename: string;
-  sensorvalue: SensorValue;
+export class SensorEditPage implements OnInit {
 
+  // sensor
+  sensorForm: FormGroup;
+  sensor: Sensor;
+  sensortypename: string;
+
+  // sensor value
+  sensorvalue: SensorValue; // current sensorvalue: { datetime, value }
+  
+  // sensortype
+  sensortype: SensorType;
+
+// sensor weekplan
+  weekplan: WeekPlan;
+  
   constructor(public navCtrl: NavController,
     private navParams: NavParams,
     private service: SensorService) {
@@ -30,7 +37,7 @@ export class LightPage implements OnInit {
   }
 
   initializeForm(){
-    this.lightForm = new FormGroup({
+    this.sensorForm = new FormGroup({
       'ison': new FormControl(),
       'sensorsetvalue': new FormControl(),
       'isweekplan': new FormControl(),
@@ -90,5 +97,6 @@ export class LightPage implements OnInit {
     
     //this.loadSensorData();
   }
+
 
 } // class

@@ -1,7 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
 
-import { SensorsPage } from './../sensors/sensors';
 import { Device } from './device.interface';
 import { Sensor } from '../sensor/sensor.interface';
 
@@ -30,8 +29,6 @@ export class DevicePage {
     this.device = { uuid: '', devicename: 'ZUEL-Multiswitch', devicetype:'sensor', buydate: '', isconnected: false}
     //this.scan()
   }
-  addSensors() {
-    this.navCtrl.push(SensorsPage);
-  }
+
 
 } // class

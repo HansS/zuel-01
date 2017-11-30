@@ -1,7 +1,7 @@
 import { OnInit } from "@angular/core";
 import { SensorValue } from './../sensor/sensorvalue.interface';
 import { Sensor } from '../sensor/sensor.interface';
-import { WeekPlan } from '../weekplan-edit/weekplan.interface';
+import { WeekPlan } from '../weekplan/weekplan.interface';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 

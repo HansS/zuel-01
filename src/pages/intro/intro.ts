@@ -1,3 +1,4 @@
+import { NavigationPage } from '../navigation/navigation';
 import { Component, ViewChild, trigger, transition, style, state, animate, keyframes } from '@angular/core';
 import { NavController, Slides } from 'ionic-angular';
 //import { MainPage } from '../main/main';
@@ -33,6 +34,9 @@ export class IntroPage {
 
   constructor(public navCtrl: NavController) {
 
+  }
+  openNavigationPage(){
+    this.navCtrl.push('NavigationPage');
   }
 
   skip() {

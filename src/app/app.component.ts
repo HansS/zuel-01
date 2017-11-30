@@ -19,31 +19,39 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // import { FanPage } from '../pages/fan/fan';
 // import { CoolerPage } from '../pages/cooler/cooler';
 
+interface Page {
+  title: string;
+  component: string;
+  sensortype: string;
+}
+
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
+  @ViewChild(Nav) nav: Nav; 
 
 //  rootPage: any = HomePage;
   rootPage: any = 'IntroPage';
 
-  pages: Array<{title: string, component: any}>;
+  //pages: Array<{ 'title': string, component: any, 'sensortype': string}>;
+  pages: Page[];
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Gerät verbinden', component: 'DeviceListPage' },
-      { title: 'Beleuchtung', component: 'LightPage' },
-      { title: 'Heizung', component: 'TemperaturePage' },
-      { title: 'Kühlgerät', component: 'CoolerPage' },
-      { title: 'Luftftbefeuchter', component: 'HumidityPage' },
-      { title: 'Lufttrockner', component: 'FanPage' },
-      { title: 'Messwerte', component: 'LogPage' },
-      { title: 'Einstellungen', component: 'SettingsPage' },
-      { title: 'Firma ZUEL', component: 'AppinfoPage' }
+      { title: 'Gerät verbinden', component: 'DeviceListPage', sensortype:'' },
+      { title: 'Beleuchtung', component: 'LightPage' , sensortype:'light'},
+      { title: 'Heizung', component: 'TemperaturePage', sensortype:'temperature plus'},
+      { title: 'Kühlgerät', component: 'CoolerPage', sensortype:'temperature minus'},
+      { title: 'Luftftbefeuchter', component: 'HumidityPage' , sensortype:'humidity plus'},
+      { title: 'Lufttrockner', component: 'FanPage' , sensortype:'humidity minus'},
+      { title: 'Messwerte', component: 'LogPage' , sensortype:''},
+      { title: 'Einstellungen', component: 'SettingsPage' , sensortype:''},
+      { title: 'Firma ZUEL', component: 'AppinfoPage' , sensortype:''}
       //{ title: 'Receipes', component: ReceipesPage }
     ];
 
@@ -58,9 +66,9 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
+  openPage(page: Page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    this.nav.setRoot(page.component, page.sensortype);
   }
 }

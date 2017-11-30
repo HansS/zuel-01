@@ -1,4 +1,4 @@
-<ion-header >
+<!-- <ion-header >
   <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -6,11 +6,11 @@
     <ion-title style="margin-left: 45px">MultiSwitch</ion-title>
   </ion-navbar>
 </ion-header>
-
+ -->
 
 <ion-content>
 
-  <ion-slides  (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
+  <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
 
     <ion-slide padding style="background: url('assets/imgs/beleuchtung.jpg')  no-repeat; background-size: 100%  100%"> 
       <div style="margin-top:90%">
@@ -25,6 +25,10 @@
           </ion-card>
         </ion-list>
       </div>
+    </ion-slide>
+
+    <ion-slide>
+      <button ion-button block (click)="openNavigationPage()">Start</button>
     </ion-slide>
 <!-- 
     <ion-slide style="background: url('assets/imgs/luftbefeuchter.jpg') no-repeat; background-size: 90% 70%; top: 10%; opacity: 0.5">

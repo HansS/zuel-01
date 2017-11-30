@@ -9,10 +9,10 @@ import { WeekPlan } from './weekplan.interface';
 
 @IonicPage()
 @Component({
-  selector: 'page-weekplan-edit',
-  templateUrl: 'weekplan-edit.html',
+  selector: 'page-weekplan',
+  templateUrl: 'weekplan.html',
 })
-export class WeekplanEditPage implements OnInit {
+export class WeekplanPage implements OnInit {
 
   sensorId: number;
   weekplan: WeekPlan;
@@ -29,7 +29,7 @@ export class WeekplanEditPage implements OnInit {
   ngOnInit() {
     this.sensorId = this.navParams.get('sensorid');
     this.weekplan = this.service.getSensorData('light').weekplan;
-    this.sensordays = this.weekplan.days;
+    this.sensordays = this.weekplan.sensordays;
   }
   ionViewDidLoad() {
 

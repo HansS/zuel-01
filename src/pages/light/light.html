@@ -3,49 +3,64 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Gerät einstellen</ion-title>
+    <ion-title>Beleuchtung verwalten</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
- <ion-list>
-    <ion-item item-start>
-      <ion-label>Mit Zeitplan {{ sensor.isplan}}</ion-label>
-    </ion-item>
-    <ion-item item-start>
-      <ion-label>Wiederholen {{ sensor.scheduletype}}</ion-label>
-    </ion-item>
-  </ion-list>
-   
- <ion-slides pager >
-    <ion-slide *ngFor="let d of sensor.weekplan.days">
-      <ion-fab right >
-        <button ion-fab color="primary" (click)="addDayplan()">
-          <ion-icon name="add"></ion-icon>
-        </button>
-      </ion-fab>
-      {{ d.day }}
-      <ion-grid>
-        <ion-row *ngFor="let dp of d.dayplan">
-          <pre></pre>
-            <ion-col width-50>
-              <ion-item>
-                {{ dp.setstarttime }}
-              </ion-item>
-            </ion-col>
-            <ion-col width-50>
-                <ion-item>
-                  {{dp.setendtime }}
-                  </ion-item>
-            </ion-col>
+
+  <form #f="ngForm" (onSubmit)="saveWeekplan(f)">
+    <ion-list>
+
+      <ion-item>
+        <ion-label>Beleuchtung ist eingeschaltet</ion-label>
+        <ion-toggle name="ison" [(ngModel)]="sensor.ison"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Beleuchtung Sollwert</ion-label>
+        <ion-input name="sensorsetvalue" [(ngModel)]="sensor.sensorsetvalue"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Werte aufzeichnen</ion-label>
+        <ion-toggle name="islog" [(ngModel)]="sensor.islog"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mit Zeitplan</ion-label>
+        <ion-toggle name="isweekplan" [(ngModel)]="sensor.isweekplan"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Wiederholen</ion-label>
+        <ion-select name="scheduletype" [(ngModel)]="sensor.scheduletype">
+          <ion-option value="daily">Täglich</ion-option>
+          <ion-option value="weekly">Wöchentlich</ion-option>
+        </ion-select>
+      </ion-item>
+
+      
+        <ion-slides>
+          <ion-slide *ngFor="let day of weekplan.sensordays">
+            {{ day.day }} <hr>
           
-        </ion-row>
-      </ion-grid>
-    </ion-slide>
-  </ion-slides>
+            <ion-list>
+              <ion-item *ngFor="let dayplan of day.dayplans">
+                Startzeit: {{dayplan.setstarttime }} <hr>
+                Endzeit: {{ dayplan.setendtime }} 
+              </ion-item>
+            </ion-list>
+
+          </ion-slide>
+        </ion-slides>
 
 
 
+    </ion-list>
 
+
+
+  </form>
 </ion-content>
