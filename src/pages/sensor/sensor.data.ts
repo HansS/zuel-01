@@ -3,7 +3,7 @@ export default [
         id: 1, uuid: '0',
         sensortypename: 'light',
         sensortype: {
-            name: "light", displayname: "Beleuchtung", unit: 'lumen', param: 'power', paramvalues: [0, 1]
+            typename: "light", displayname: "Beleuchtung", unit: 'lumen', param: 'power', paramvalues: [0, 1]
         },
         sensorsetvalue: 1,
         ison: false,
@@ -76,7 +76,7 @@ export default [
         id: 2, uuid: '0',
         sensortypename: 'temperature-plus',       
         sensortype: {
-            name: "temperature-plus", displayname: "Heizung", unit: 'celsius', param: 'degree', paramvalues: [0, 1]
+            typename: "temperature-plus", displayname: "Heizung", unit: 'celsius', param: 'degree', paramvalues: [0, 1]
         },
         ison: false,
         sensorvalue: { datetime: '08.11.2017 11:00:00', value: 15 },
@@ -151,7 +151,7 @@ export default [
         id: 3, uuid: '0',
         sensortypename: 'temperature-minus',       
         sensortype: {
-            name: "temperature-minus", displayname: "Kühlgerät", unit: 'celsius', param: 'degree', paramvalues: [0, 1]
+            typename: "temperature-minus", displayname: "Kühlgerät", unit: 'celsius', param: 'degree', paramvalues: [0, 1]
         },
         ison: false,
         sensorvalue: { datetime: '08.11.2017 11:00:00', value: 15 },
@@ -226,7 +226,7 @@ export default [
         id: 4, uuid: '0',
         sensortypename: 'humidity-plus',       
         sensortype: {
-            name: "humidity-plus", displayname: "Luftbefeuchter", unit: 'percent', param: 'degree', paramvalues: [0, 1]
+            typename: "humidity-plus", displayname: "Luftbefeuchter", unit: 'percent', param: 'degree', paramvalues: [0, 1]
         },
         ison: false,
         sensorvalue: { datetime: '08.11.2017 11:00:00', value: 15 },
@@ -302,7 +302,7 @@ export default [
         id: 5, uuid: '0',
         sensortypename: 'humidity-minus',       
         sensortype: {
-            name: "humidity-minus", displayname: "Lufttrockner", unit: 'percent', param: 'degree', paramvalues: [0, 1]
+            typename: "humidity-minus", displayname: "Lufttrockner", unit: 'percent', param: 'degree', paramvalues: [0, 1]
         },
         ison: false,
         sensorvalue: { datetime: '08.11.2017 11:00:00', value: 15 },

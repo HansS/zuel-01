@@ -20,9 +20,9 @@ export class SensorService {
     console.dir(sensordata);
 
   }
-  getSensorData(type: string): Sensor {
-    let data = this.sensors.filter(s => s.sensortype.name === type);
-    console.dir(data[0]);
+  getSensorData(name: string): Sensor {
+    let data = this.sensors.filter(s => s.sensortype.typename === name);
+    console.dir(data);
     
     return data[0];
   }

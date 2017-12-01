@@ -1,5 +1,5 @@
 export interface SensorType {
-    name: string;
+    typename: string;
     displayname: string;
     unit: string;
     param: string;
