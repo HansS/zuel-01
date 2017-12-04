@@ -1,6 +1,6 @@
 import { SensorType } from '../sensor/sensortype.interface';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormGroupName } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
 
@@ -17,38 +17,66 @@ import { WeekPlan } from '../weekplan/weekplan.interface';
 export class SensorEditPage implements OnInit {
 
   // sensor
-  sensorForm: FormGroup;
+  sensorEditForm: FormGroup;
   sensor: Sensor;
   sensortypename: string;
 
   // sensor value
   sensorvalue: SensorValue; // current sensorvalue: { datetime, value }
-  
+
   // sensortype
   sensortype: SensorType;
 
-// sensor weekplan
+  // sensor weekplan
   weekplan: WeekPlan;
-  
+
   constructor(public navCtrl: NavController,
     private navParams: NavParams,
     private service: SensorService) {
 
   }
 
-  initializeForm(){
-    this.sensorForm = new FormGroup({
-      'ison': new FormControl(),
-      'sensorsetvalue': new FormControl(),
-      'isweekplan': new FormControl(),
-      'islog': new FormControl(),
-      'weekplan': new FormGroup({
-        'scheduletype': new FormControl(),
-      }),
-    });
-  }
+  initializeForm() {
+    this.sensorEditForm = new FormGroup({
+      ison: new FormControl(),
+      sensorsetvalue: new FormControl(),
+      scheduletype: new FormControl(),
+      isweekplan: new FormControl(),
+      islog: new FormControl(),
+
+      weekplan: new FormGroup({
+        plandatetime: new FormControl(Date.now()),
+        planname: new FormControl(),
+        sensortypename: new FormControl(),
+        setvalue: new FormControl(),
+
+        offset: new FormGroup({
+          minutes: new FormControl,
+          israndom: new FormControl,
+          offsettype: new FormControl,
+          settimetype: new FormControl,
+        }), // offset FormGroup
+        day: new FormGroup({
+          day: new FormControl(),
+
+          dayplan: new FormGroup({
+            setstarttime: new FormControl(),
+            setendtime: new FormControl(),
+            starttime: new FormControl(),
+            endtime: new FormControl()
+          }) // dayplan FormGroup
+          
+        }), // day FormGroup
+
+        }) // weekplan FormGroup
+
+      }) // sensorEditForm
+
+    } // initializeForm
+  
   ngOnInit() {
     this.loadSensorData();
+    this.initializeForm();
     //this.sensorvalue = this.sensor.sensorvalue;
   }
 
@@ -56,8 +84,8 @@ export class SensorEditPage implements OnInit {
     console.log('ionViewDidLoad LightPage');
 
     this.sensortypename = this.navParams.get('sensortype');
-    console.log('sensortypename:',this.sensortypename);
-    
+    console.log('sensortypename:', this.sensortypename);
+
     //this.loadSensorData();
   }
 
@@ -83,7 +111,7 @@ export class SensorEditPage implements OnInit {
     }
   }
 
-  saveWeekplan(f: FormGroup) {
+  saveWeekplan(f = this.sensorEditForm) {
     console.log(f.value);
 
   }
@@ -92,9 +120,9 @@ export class SensorEditPage implements OnInit {
     console.log('ionViewDidLoad LightPage');
 
     //this.sensortypename = this.navParams.get('sensortype');
-    
-    
-    
+
+
+
     //this.loadSensorData();
   }
 

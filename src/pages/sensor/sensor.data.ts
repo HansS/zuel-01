@@ -18,11 +18,11 @@ export default [
                 sensortype: "light",
                 // sensor.sensortype.displayname + sensor.scheduletypedisplay
                 planname: "Beleuchtung wöchentlich",
-                offset: { minutes: 30, israndom: false, offsettype: -1, settype: '-1' },
+                offset: { minutes: 30, israndom: false, offsettype: -1, settimetype: '-1' },
                 sensordays: [
                     {
                         day: 'Mo',
-                        sensortype: 'light',
+                        sensortypename: 'light',
                         dayplans: [
                             { setstarttime: '09:00', setendtime: '11:15', starttime: '09:00', endtime: '11:15' },
                         ]
@@ -91,12 +91,12 @@ export default [
                 plandatetime: '22.11.2017 12:00:00',
                 // sensor.sensortype.displayname + sensor.scheduletypedisplay
                 planname: "Heizung wöchentlich",
-                sensortype: "temperature-plus",
+                sensortypename: "temperature-plus",
                 plansetvalue: 21,
-                offset: { minutes: 30, israndom: false, offsettype: -1, settype: '-1' },
+                offset: { minutes: 30, israndom: false, offsettype: -1, settimetype: '-1' },
                 sensordays: [
                     {
-                        sensortype: 'temperature',
+                        sensortypename: 'temperature',
                         day: 'Mo',
                         dayplans: [
                             { setstarttime: '09:00', setendtime: '11:15', starttime: '09:00', endtime: '11:15' },
@@ -166,12 +166,12 @@ export default [
                 plandatetime: '22.11.2017 12:00:00',
                 // sensor.sensortype.displayname + sensor.scheduletypedisplay
                 planname: "Kühlgerät wöchentlich",
-                sensortype: "temperature-minus",
+                sensortypename: "temperature-minus",
                 plansetvalue: 18,
-                offset: { minutes: 30, israndom: false, offsettype: -1, settype: '-1' },
+                offset: { minutes: 30, israndom: false, offsettype: -1, settimetype: '-1' },
                 sensordays: [
                     {
-                        sensortype: 'temperature-minus',
+                        sensortypename: 'temperature-minus',
                         day: 'Mo',
                         dayplans: [
                             { setstarttime: '09:00', setendtime: '11:15', starttime: '09:00', endtime: '11:15' },
@@ -241,12 +241,12 @@ export default [
                 plandatetime: '22.11.2017 12:00:00',
                 // sensor.sensortype.displayname + sensor.scheduletypedisplay
                 planname: "Luftbefeuchter wöchentlich",
-                sensortype: "humidity-plus",
+                sensortypename: "humidity-plus",
                 plansetvalue: 30,
-                offset: { minutes: 30, israndom: false, offsettype: -1, settype: '-1' },
+                offset: { minutes: 30, israndom: false, offsettype: -1, settimetype: '-1' },
                 sensordays: [
                     {
-                        sensortype: 'humidity-plus',
+                        sensortypename: 'humidity-plus',
                         day: 'Mo',
                         dayplans: [
                             { setstarttime: '09:00', setendtime: '11:15', starttime: '09:00', endtime: '11:15' },
@@ -317,12 +317,12 @@ export default [
                 plandatetime: '22.11.2017 12:00:00',
                 // sensor.sensortype.displayname + sensor.scheduletypedisplay
                 planname: "Lufttrockner wöchentlich",
-                sensortype: "humidity-minus",
+                sensortypename: "humidity-minus",
                 plansetvalue: 34,
-                offset: { minutes: 30, israndom: false, offsettype: -1, settype: '-1' },
+                offset: { minutes: 30, israndom: false, offsettype: -1, settimetype: '-1' },
                 sensordays: [
                     {
-                        sensortype: 'humidity-minus',
+                        sensortypename: 'humidity-minus',
                         day: 'Mo',
                         dayplans: [
                             { setstarttime: '09:00', setendtime: '11:15', starttime: '09:00', endtime: '11:15' },

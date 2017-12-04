@@ -5,8 +5,7 @@ import { SensorOffset } from '../sensor/sensoroffset.interface';
 export interface WeekPlan {
     plandatetime:string;
     planname: string;
-    plannamedisplay:string;
-    sensortype: SensorType;
+    sensortypename: string;
     setvalue: number;  
     offset: SensorOffset;                             //  Offset Type describes the offset values
     sensordays: SensorDay[];
