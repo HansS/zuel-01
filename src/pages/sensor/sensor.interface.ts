@@ -18,5 +18,4 @@ export interface Sensor {
     weekplan: WeekPlan;
     islog: boolean
     logvalues: SensorValue[]
-
 }

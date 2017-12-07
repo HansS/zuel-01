@@ -44,39 +44,23 @@
 
       <div formGroupName="weekplan">
 
-        <ion-slides>
+        <ion-slides formGroupName="sensordays">
 
+          
+          <ion-slide *ngFor="let sd of weekplan.sensordays" >
+              {{ sd.day }}<ion-input type="text" formControlName="day" ></ion-input>
+            <button ion-button (click)="onAddStarttime()">Add Starttime</button>
+            
+            <div formArrayName="dayplans">
+              <div *ngFor="let starttimeControl of dayplanFormArray.controls; let i = index">
+                <ion-datetime displayFormat="HH:mm" [formControlName]="i"></ion-datetime>
+              </div>
+            </div>
+            <!--- formArrayName="dayplans" -->
 
-          <ion-slide *ngFor="let day of weekplan.sensordays">
-            {{ day.day }}
-
-            <hr>
-
-            <ion-list>
-              <ion-item *ngFor="let dayplan of day.dayplans">
-                <div formGroupName="day">
-
-                  <ion-datetime formControlName="setstarttime" displayFormat="HH:mm"></ion-datetime>
-                  plan Startzeit: {{dayplan.setstarttime }}
-                  <br>
-                  <ion-datetime formControlName="setendtime" displayFormat="HH:mm"></ion-datetime>
-                  plan Endzeit: {{dayplan.setendtime }}
-                  <br>
-                  <br>
-                  <ion-datetime formControlName="starttime" displayFormat="HH:mm"></ion-datetime>
-                  ist Startzeit: {{dayplan.starttime }}
-                  <br>
-                  <ion-datetime formControlName="endtime" displayFormat="HH:mm"></ion-datetime>
-                  ist Endzeit: {{dayplan.endtime }}
-                  <br>
-                </div>
-                <!--- formGroupName="dayplan" -->
-              </ion-item>
-
-            </ion-list>
 
           </ion-slide>
-          <!--- day slide -->
+          <!--- formGroupName="sensordays" slide -->
 
         </ion-slides>
 
@@ -86,6 +70,8 @@
     </ion-list>
 
 
-
+    <button ion-button (click)="saveWeekplan()">Save Weekplan</button>
   </form>
+
+  {{sensorEditForm.value | json }}
 </ion-content>
