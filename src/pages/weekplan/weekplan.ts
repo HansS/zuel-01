@@ -1,55 +1,130 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {
+  FormBuilder,
+  FormArray,
+  FormControl,
+  FormGroup,
+  Validators
+} from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
+import days from "./days.data";
 
-import { SensorService } from '../sensor/sensor.service';
-import { SensorDay } from '../sensor/sensorday.interface';
-import { WeekPlan } from './weekplan.interface';
-
+import { SensorService } from "../sensor/sensor.service";
+import { SensorDay } from "../sensor/sensorday.interface";
+import { WeekPlan } from "./weekplan.interface";
+import { DayPlan } from "./dayplan.interface";
 
 @IonicPage()
 @Component({
-  selector: 'page-weekplan',
-  templateUrl: 'weekplan.html',
+  selector: "page-weekplan",
+  templateUrl: "weekplan.html"
 })
 export class WeekplanPage implements OnInit {
-
   sensorId: number;
+
+  // weekplan with sensordays : 'Mo', 'Di', ... 'So'
   weekplan: WeekPlan;
   sensordays: SensorDay[];
-  displayname = "Beleuchtung";
-  // form
-  dayplanForm: FormGroup;
 
-  constructor(public navCtrl: NavController,
+  // Day
+  // days : import from days.data.ts
+  sensorday: SensorDay;
+  dayplans: DayPlan[];
+  dayplansFormArray: FormArray;
+
+  // weekplan form
+  weekplanForm: FormGroup;
+
+  constructor(
+    public navCtrl: NavController,
+    private fb: FormBuilder,
     public navParams: NavParams,
-    public service: SensorService) {
-  }
+    public service: SensorService
+  ) {}
 
   ngOnInit() {
-    this.sensorId = this.navParams.get('sensorid');
-    this.weekplan = this.service.getSensorData('light').weekplan;
+    this.sensorId = this.navParams.get("sensorid");
+    this.weekplan = this.service.getSensorData("light").weekplan;
     this.sensordays = this.weekplan.sensordays;
+    console.log('sensordays: ', this.sensordays);
+    
+    this.initializeForm();
   }
+
+  initializeForm() {
+    this.weekplanForm = this.fb.group({
+      plandatetime: [""],
+      planname: [""],
+      sensortypename: [""],
+      setvalue: [""],
+      offset: this.fb.group({
+        minutes: [""], // how many minutes to offset
+        israndom: [""], // fixed starttime and endtime or random starttime and endtime
+        offsettype: [""], // +1 : + minutes , -1: - minutes from settimetype
+        settimetype: [""] // 'starttime' or 'endtime'
+      }),
+      sensordays: this.fb.group({
+        sensorday: this.fb.group({
+          day: [""],
+          dayplans: this.fb.array([
+
+            // calculated starttime and endtime (with offset settings)
+            'starttime',
+            'endtime'
+          ])
+        })
+      })
+    }); // weekplan Form
+
+    console.log("weekplan-weekplanForm", this.weekplanForm);
+    this.setDayplansFormArrayReference();
+  } // initializeForm
+
+  setDayplansFormArrayReference() {
+    let sensordayGroup = (this.weekplanForm.controls.sensordays as FormGroup)
+      .controls.sensorday as FormGroup;
+    this.dayplansFormArray = sensordayGroup.controls.dayplans as FormArray;
+    console.log("dayplansFormArray:", this.dayplansFormArray);
+  }
+
+  createSensordays(): FormGroup {
+    return this.fb.group({
+      sensorday: this.fb.group({
+        day: [],
+        dayplans: this.fb.array([this.createDayplan()])
+      })
+    });
+  }
+
+  createDayplan(): FormGroup {
+    return this.fb.group({
+      // user selected starttime and endtime
+      setstarttime: [""],
+      setendtime: [""],
+      // calculated starttime and endtime (with offset settings)
+      starttime: [""],
+      endtime: [""]
+    });
+  }
+
+  createOffset(): FormGroup {
+    return this.fb.group({
+      minutes: [""], // how many minutes to offset
+      israndom: [""], // fixed starttime and endtime or random starttime and endtime
+      offsettype: [""], // +1 : + minutes , -1: - minutes from settimetype
+      settimetype: [""] // 'starttime' or 'endtime'
+    });
+  }
+
   ionViewDidLoad() {
-
-    console.log('ionViewDidLoad weekplanEditPage');
-    console.log('weekplan-edit: weekplan:', this.weekplan);
-    console.log('weekplan-edit: sensordays:', this.sensordays);
-
+    console.log("ionViewDidLoad weekplanEditPage");
+    console.log("weekplan-edit: weekplan:", this.weekplan);
+    console.log("weekplan-edit: sensordays:", this.sensordays);
   }
   savePlantime() {
-    console.log('weekplan-edit:savePlantime');
-
+    console.log("weekplan-edit:savePlantime");
   }
   addPlantime() {
-    console.log('weekplan-edit:addPlantime');
-  }
-  initializeForm(){
-    this.dayplanForm = new FormGroup({
-      'setstarttime': new FormControl(null, Validators.required),
-      'setendtime': new FormControl(null, Validators.required)
-
-    });
+    console.log("weekplan-edit:addPlantime");
   }
 } // class

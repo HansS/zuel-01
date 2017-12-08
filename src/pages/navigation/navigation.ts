@@ -29,4 +29,7 @@ export class NavigationPage {
   openLufttrockner(){
     this.navCtrl.push('SensorEditPage', {'sensortype': 'humidity-minus'})
   }
+  openWeekplan(){
+    this.navCtrl.push('WeekplanPage', {'sensortype': 'light'})
+  }
 }

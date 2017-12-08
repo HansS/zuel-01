@@ -1,67 +1,55 @@
-<ion-header>
-  <h3 text-center>Zeitplan für {{ displayname }}</h3>
-  <button ion-button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
-</ion-header>
+<form [formGroup]="weekplanForm">
 
-<ion-content>
 
-  <ion-slides pager>
-    <ion-slide *ngFor="let d of weekplan.days">
-<form>
+    <!-- plandatetime: FormControl -->
+    <ion-datetime formControlName="plandatetime"></ion-datetime>
+
+    <!-- planname: FormControl -->
+    <ion-input type="text" formControlName="planname"></ion-input>
+    
+    <!-- sensortypename: FormControl -->
+    <ion-input type="text" formControlName="sensortypename"></ion-input>
+
+    <!-- setvalue: FormControl -->
+    <ion-input type="number" formControlName="setvalue"></ion-input>
+
+  <div formGroupName="offset">
+      <!-- minutes: number;                              // how many minutes to offset -->
+      <ion-input type="number" formControlName="minutes"></ion-input>
+
+      <!-- israndom: boolean;                         // fixed starttime and endtime or random starttime and endtime -->
+      <!-- <ion-toggle formControlName="israndom"></ion-toggle> -->
+
+      <!-- offsettype: number;                         // +1 : + minutes , -1: - minutes from settimetype  -->
+      <ion-input type="number" formControlName="offsettype"></ion-input>
+      
+      <!-- settimetype: string;                                 // 'starttime' or 'endtime' -->
+      <ion-input type="text" formControlName="settimetype"></ion-input>
+
+  </div>
+            <!-- offset: FormGroup //  Offset Type describes the offset values -->
   
-  <ion-grid>
+    
+    <!-- sensordays: FormGroup -->
+    <ion-slides formGroupName="sensordays">
 
-    <ion-row><!--- Grid Title row with add button -->
-      <ion-col width-70>
-        <h3 text-right>{{ d.day }}</h3>
-      </ion-col>
-      <ion-col width-30>
-        <ion-fab mini>
-          <button ion-fab (click)="addPlantime()">
-            <ion-icon name="add"></ion-icon>
-          </button>
-        </ion-fab>
-      </ion-col>
-    </ion-row>
+      <ion-slide *ngFor="let sd of weekplan.sensordays" formGroupName="sensorday">
+          <!-- day: FormControl -->
+        <ion-input formControlName="day"></ion-input>
 
-    <ion-row>
-      <!--- grid header row  with col titles-->
-      <ion-col width-50 text-center>
-        <ion-label>Startzeit</ion-label>
-      </ion-col>
-      <ion-col width-50 text-center>
-        <ion-label>Endzeit</ion-label>
-      </ion-col>
-    </ion-row>
+        <!-- dayplans: FormArray    {setstarttime, setendtime, starttime, endtime} -->
+        <div *ngFor="let dayplan of dayplansFormArray.controls; let i = index;" formArrayName="dayplans" >
+            <!-- starttime:  string;                         // 12:30 -->
+            <ion-datetime displayFormat="HH:mm" [formControlName]="i"></ion-datetime>
+            
+            <!-- endtime: string;                             // 20:45 -->
+            <ion-datetime displayFormat="HH:mm" [formControlName]="i"></ion-datetime>
+        </div>
+      </ion-slide>
+      
+    
+  </ion-slides><!---formGroupName="sensordays"  -->
 
-    <ion-row *ngFor="let dp of d.dayplans">
-      <!--- grid data rows  with col setstarttime and col setendtime-->
-      <ion-col width-50>
-        <ion-datetime name="setstarttime" displayFormat="HH:mm" [(ngModel)]="dp.setstarttime"></ion-datetime>
-      </ion-col>
-      <ion-col width-50>
-        <ion-datetime name="setendtime" displayFormat="HH:mm" [(ngModel)]="dp.setendtime"></ion-datetime>
-      </ion-col>
-    </ion-row>
-
-    <ion-row><!--- Grid Footer row with save button -->
-      <ion-col width-70>
-      </ion-col>
-      <ion-col width-30>
-        <ion-fab >
-          <button type="submit" minis ion-fab (click)="savePlantime()">
-            <ion-icon name="folder"></ion-icon>
-          </button>
-        </ion-fab>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
+  
 </form>
-
-    </ion-slide>
-  </ion-slides>
-
-</ion-content>
+{{weekplanForm.value | json }}

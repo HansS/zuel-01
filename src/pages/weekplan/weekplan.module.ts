@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
+import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, FormControl } from "@angular/forms";
+
 import { WeekplanPage } from './weekplan';
 
 @NgModule({
