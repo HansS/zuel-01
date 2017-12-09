@@ -9,20 +9,19 @@ export default [
         ison: false,
         sensorvalue: { datetime: '08.11.2017 11:00:00', value: 1 },
         isweekplan: true,
-        scheduletype: "weekly",
-        scheduletypedisplay: "wöchentlich",
+        weekplantype: {typename: 'weekly', typedisplay: 'wöchentlich'},
         // sensor.sensortype.displayname + sensor.scheduletypedisplay
         weekplanname: 'Beleuchtung wöchentlich',
         weekplan:
             {
-                sensortype: "light",
+                weekplantype: {typename: 'weekly', typedisplay: 'wöchentlich'},
+                sensortypename: "light",
                 // sensor.sensortype.displayname + sensor.scheduletypedisplay
                 planname: "Beleuchtung wöchentlich",
                 offset: { minutes: 30, israndom: false, offsettype: -1, settimetype: '-1' },
                 sensordays: [
                     {
                         day: 'Mo',
-                        sensortypename: 'light',
                         dayplans: [
                             { setstarttime: '09:00', setendtime: '11:15', starttime: '09:00', endtime: '11:15' },
                         ]
@@ -82,8 +81,7 @@ export default [
         sensorvalue: { datetime: '08.11.2017 11:00:00', value: 15 },
         sensorsetvalue: 20,
         isplan: true,
-        scheduletype: "weekly",
-        scheduletypedisplay: "wöchentlich",
+        weekplantype: {name: "weekly", displayname: 'wöchentlich'},
         // sensor.sensortype.displayname + sensor.scheduletypedisplay
         weekplanname: 'Heizung wöchentlich',
         weekplan:
@@ -96,7 +94,6 @@ export default [
                 offset: { minutes: 30, israndom: false, offsettype: -1, settimetype: '-1' },
                 sensordays: [
                     {
-                        sensortypename: 'temperature',
                         day: 'Mo',
                         dayplans: [
                             { setstarttime: '09:00', setendtime: '11:15', starttime: '09:00', endtime: '11:15' },
@@ -157,8 +154,7 @@ export default [
         sensorvalue: { datetime: '08.11.2017 11:00:00', value: 15 },
         sensorsetvalue: 18,
         isplan: true,
-        scheduletype: "weekly",
-        scheduletypedisplay: "wöchentlich",
+        weekplantype: {name: 'weekly', displayname: 'wöchentlich'},
         // sensor.sensortype.displayname + sensor.scheduletypedisplay
         weekplanname: 'Kühlgerät wöchentlich',
         weekplan:
@@ -171,7 +167,6 @@ export default [
                 offset: { minutes: 30, israndom: false, offsettype: -1, settimetype: '-1' },
                 sensordays: [
                     {
-                        sensortypename: 'temperature-minus',
                         day: 'Mo',
                         dayplans: [
                             { setstarttime: '09:00', setendtime: '11:15', starttime: '09:00', endtime: '11:15' },
@@ -232,8 +227,7 @@ export default [
         sensorvalue: { datetime: '08.11.2017 11:00:00', value: 15 },
         sensorsetvalue: 1,
         isplan: true,
-        scheduletype: "weekly",
-        scheduletypedisplay: "wöchentlich",
+        weekplantype: {name: "weekly", displayname: 'wöchentlich'},
         // sensor.sensortype.displayname + sensor.scheduletypedisplay
         weekplanname: 'Luftbefeuchter wöchentlich',
         weekplan:
@@ -246,7 +240,6 @@ export default [
                 offset: { minutes: 30, israndom: false, offsettype: -1, settimetype: '-1' },
                 sensordays: [
                     {
-                        sensortypename: 'humidity-plus',
                         day: 'Mo',
                         dayplans: [
                             { setstarttime: '09:00', setendtime: '11:15', starttime: '09:00', endtime: '11:15' },
@@ -308,8 +301,7 @@ export default [
         sensorvalue: { datetime: '08.11.2017 11:00:00', value: 15 },
         sensorsetvalue: 34,
         isplan: true,
-        scheduletype: "weekly",
-        scheduletypedisplay: "wöchentlich",
+        weekplantype: {name: "weekly", displayname: 'wöchentlich'},
         // sensor.sensortype.displayname + sensor.scheduletypedisplay
         weekplanname: 'Lufttrockner wöchentlich',
         weekplan:

@@ -1,7 +1,8 @@
 export interface SensorType {
-    typename: string;
+    name: string;
     displayname: string;
+    devicename: string;
     unit: string;
-    param: string;
-    paramvalues: string[];
+    param?: string;
+    paramvalues?: string[];
 }

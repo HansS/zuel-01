@@ -1,55 +1,87 @@
-<form [formGroup]="weekplanForm">
+<ion-header>
+    <h2>Header here</h2>
+</ion-header>
+<ion-content>
+    <form [formGroup]="weekplanForm">
 
 
-    <!-- plandatetime: FormControl -->
-    <ion-datetime formControlName="plandatetime"></ion-datetime>
+        <!-- plandatetime: FormControl -->
+        <ion-item>
+            <ion-label>Plan Date and Time</ion-label>
+            <ion-datetime formControlName="plandatetime" value="09.12.2017 14:00:00"></ion-datetime>
+        </ion-item>
 
-    <!-- planname: FormControl -->
-    <ion-input type="text" formControlName="planname"></ion-input>
-    
-    <!-- sensortypename: FormControl -->
-    <ion-input type="text" formControlName="sensortypename"></ion-input>
+        <!-- planname: FormControl -->
+        <ion-item>
+            <ion-label>Plan Name</ion-label>
+            <ion-input type="text" formControlName="planname"></ion-input>
+        </ion-item>
+        <!-- sensortypename: FormControl -->
+        <ion-input type="text" formControlName="sensortypename"></ion-input>
 
-    <!-- setvalue: FormControl -->
-    <ion-input type="number" formControlName="setvalue"></ion-input>
+        <!-- setvalue: FormControl -->
+        <ion-item>
+            <ion-label>Sollwert</ion-label>
+            <ion-input type="number" formControlName="setvalue"></ion-input>
+        </ion-item>
 
-  <div formGroupName="offset">
-      <!-- minutes: number;                              // how many minutes to offset -->
-      <ion-input type="number" formControlName="minutes"></ion-input>
+        <div formGroupName="offset">
+            <!-- minutes: number;                              // how many minutes to offset -->
+            <ion-item>
+                <ion-label>Offset in Minutes</ion-label>
+                <ion-input type="number" formControlName="minutes"></ion-input>
+            </ion-item>
 
-      <!-- israndom: boolean;                         // fixed starttime and endtime or random starttime and endtime -->
-      <!-- <ion-toggle formControlName="israndom"></ion-toggle> -->
+            <ion-item>
+                <ion-label>Is Random</ion-label>
+                <ion-toggle formControlName="israndom"></ion-toggle>
+            </ion-item>
 
-      <!-- offsettype: number;                         // +1 : + minutes , -1: - minutes from settimetype  -->
-      <ion-input type="number" formControlName="offsettype"></ion-input>
-      
-      <!-- settimetype: string;                                 // 'starttime' or 'endtime' -->
-      <ion-input type="text" formControlName="settimetype"></ion-input>
+            <!-- offsettype: number;                         // +1 : + minutes , -1: - minutes from settimetype  -->
+            <ion-item>
+                <ion-label>Offset add (1) or subtract Offset (-1)</ion-label>
+                <ion-input type="number" formControlName="offsettype"></ion-input>
+            </ion-item>
 
-  </div>
-            <!-- offset: FormGroup //  Offset Type describes the offset values -->
-  
-    
-    <!-- sensordays: FormGroup -->
-    <ion-slides formGroupName="sensordays">
-
-      <ion-slide *ngFor="let sd of weekplan.sensordays" formGroupName="sensorday">
-          <!-- day: FormControl -->
-        <ion-input formControlName="day"></ion-input>
-
-        <!-- dayplans: FormArray    {setstarttime, setendtime, starttime, endtime} -->
-        <div *ngFor="let dayplan of dayplansFormArray.controls; let i = index;" formArrayName="dayplans" >
-            <!-- starttime:  string;                         // 12:30 -->
-            <ion-datetime displayFormat="HH:mm" [formControlName]="i"></ion-datetime>
-            
-            <!-- endtime: string;                             // 20:45 -->
-            <ion-datetime displayFormat="HH:mm" [formControlName]="i"></ion-datetime>
+            <!-- settimetype: string;                                 // 'starttime' or 'endtime' -->
+            <ion-item>
+                <ion-label>Apply Offset to Start or End</ion-label>
+                <ion-input type="text" formControlName="settimetype"></ion-input>
+            </ion-item>
         </div>
-      </ion-slide>
-      
-    
-  </ion-slides><!---formGroupName="sensordays"  -->
+        <!-- offset: FormGroup //  Offset Type describes the offset values -->
 
-  
-</form>
-{{weekplanForm.value | json }}
+
+        <!-- sensordays: FormGroup -->
+        <ion-slides formGroupName="sensordays">
+
+            <ion-slide *ngFor="let sd of weekplan.sensordays" formGroupName="sensorday">
+                <!-- day: FormControl -->
+                <ion-item>
+                    <ion-label>Day</ion-label>
+                    <ion-input formControlName="day"></ion-input>
+                </ion-item>
+                <!-- dayplans: FormArray    {setstarttime, setendtime, starttime, endtime} -->
+                <div *ngFor="let dayplan of dayplansFormArray.controls; let i = index;" formArrayName="dayplans">
+                    <!-- starttime:  string;                         // 12:30 -->
+                    <ion-item>
+                        <ion-label>Start Time</ion-label>
+                        <ion-datetime displayFormat="HH:mm" [formControlName]="i"></ion-datetime>
+                    </ion-item>
+
+                    <!-- endtime: string;                             // 20:45 -->
+                    <ion-item>
+                        <ion-label>End Time</ion-label>
+                        <ion-datetime displayFormat="HH:mm" [formControlName]="i"></ion-datetime>
+                    </ion-item>
+                </div>
+            </ion-slide>
+
+
+        </ion-slides>
+        <!---formGroupName="sensordays"  -->
+
+
+    </form>
+    {{weekplanForm.value | json }}
+</ion-content>
