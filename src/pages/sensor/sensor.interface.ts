@@ -16,5 +16,5 @@ export interface Sensor {
     weekplanname: string; // sensortypename + weekplantype.typename
     weekplan: WeekPlan;
     islog: boolean
-    logvalues: SensorValue[]
+    sensorvalues: SensorValue[]
 }

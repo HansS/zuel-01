@@ -15,21 +15,21 @@ export class NavigationPage {
     console.log('ionViewDidLoad NavigationPage');
   }
   openBeleuchtung(){
-    this.navCtrl.push('SensorEditPage', {'sensortype': 'light'})
+    this.navCtrl.push('SensorEditPage', {'sensortypename': 'light'})
   }
   openHeizung(){
-    this.navCtrl.push('SensorEditPage', {'sensortype': 'temperature-plus'})
+    this.navCtrl.push('SensorEditPage', {'sensortypename': 'temperature-plus'})
   }
   openKuehlgeraet(){
-    this.navCtrl.push('SensorEditPage', {'sensortype': 'temperature-minus'})
+    this.navCtrl.push('SensorEditPage', {'sensortypename': 'temperature-minus'})
   }
   openLuftbefeuchter(){
-    this.navCtrl.push('SensorEditPage', {'sensortype': 'humidity-plus'})
+    this.navCtrl.push('SensorEditPage', {'sensortypename': 'humidity-plus'})
   }
   openLufttrockner(){
-    this.navCtrl.push('SensorEditPage', {'sensortype': 'humidity-minus'})
+    this.navCtrl.push('SensorEditPage', {'sensortypename': 'humidity-minus'})
   }
   openWeekplan(){
-    this.navCtrl.push('WeekplanPage', {'sensortype': 'light'})
+    this.navCtrl.push('WeekplanPage', {'sensortypename': 'light'})
   }
 }

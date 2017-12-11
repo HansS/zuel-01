@@ -21,7 +21,7 @@ import { DayPlan } from "./dayplan.interface";
 })
 export class WeekplanPage implements OnInit {
   sensorId: number;
-
+  sensortypename: string;
   // weekplan with sensordays : 'Mo', 'Di', ... 'So'
   weekplan: WeekPlan;
   sensordays: SensorDay[];
@@ -43,11 +43,10 @@ export class WeekplanPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.sensorId = this.navParams.get("sensorid");
     this.weekplan = this.service.getSensorData("light").weekplan;
     this.sensordays = this.weekplan.sensordays;
-    console.log('sensordays: ', this.sensordays);
-    
+    console.log("sensordays: ", this.sensordays);
+
     this.initializeForm();
   }
 
@@ -63,48 +62,35 @@ export class WeekplanPage implements OnInit {
         offsettype: [""], // +1 : + minutes , -1: - minutes from settimetype
         settimetype: [""] // 'starttime' or 'endtime'
       }),
-      sensordays: this.fb.group({
-        sensorday: this.fb.group({
-          day: [""],
-          dayplans: this.fb.array([
-
-            // calculated starttime and endtime (with offset settings)
-            'starttime',
-            'endtime'
-          ])
-        })
-      })
+      dayplans: this.fb.array([this.createDayplan()])
     }); // weekplan Form
 
     console.log("weekplan-weekplanForm", this.weekplanForm);
-    this.setDayplansFormArrayReference();
+    this.setDayplanFormGroupReference();
   } // initializeForm
 
-  setDayplansFormArrayReference() {
-    let sensordayGroup = (this.weekplanForm.controls.sensordays as FormGroup)
-      .controls.sensorday as FormGroup;
-    this.dayplansFormArray = sensordayGroup.controls.dayplans as FormArray;
+  ionViewWillEnter() {
+    this.sensortypename = this.navParams.get("sensortypename");
+  }
+
+  setDayplanFormGroupReference() {
+    //let sensordayGroup = this.weekplanForm.controls.sensorday as FormGroup;
+    this.dayplansFormArray = this.weekplanForm.controls.dayplans as FormArray;
+
     console.log("dayplansFormArray:", this.dayplansFormArray);
   }
 
-  createSensordays(): FormGroup {
+  createDayplan() {
     return this.fb.group({
-      sensorday: this.fb.group({
-        day: [],
-        dayplans: this.fb.array([this.createDayplan()])
-      })
+      // user selected starttime and endtime
+      day: ["", Validators.required],
+      setstarttime: ["", Validators.required],
+      setendtime: ["", Validators.required]
     });
   }
 
-  createDayplan(): FormGroup {
-    return this.fb.group({
-      // user selected starttime and endtime
-      setstarttime: [""],
-      setendtime: [""],
-      // calculated starttime and endtime (with offset settings)
-      starttime: [""],
-      endtime: [""]
-    });
+  addDayplan() {
+    this.dayplansFormArray.push(this.createDayplan());
   }
 
   createOffset(): FormGroup {

@@ -2,6 +2,7 @@ import { SensorType } from "../sensor/sensortype.interface";
 import { Component, OnInit } from "@angular/core";
 
 import {
+  FormBuilder,
   FormGroup,
   FormControl,
   FormGroupName,
@@ -41,6 +42,7 @@ export class SensorEditPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
+    private fb: FormBuilder,
     private navParams: NavParams,
     private service: SensorService
   ) {}
@@ -69,16 +71,24 @@ export class SensorEditPage implements OnInit {
         sensordays: new FormGroup({
           day: new FormControl(['Mo', Validators.required]),
 
-          dayplans: new FormArray([
-            new FormControl(['Mo', Validators.required]),
-            new FormControl(["08:00", Validators.required])
-          ]) // weekplan sensordays day dayplans FormArray
+          dayplans: this.fb.array([this.createDayplan()])
         }),
 
       }) // weekplan FormGroup
     }); // sensorEditForm;
 
   } // initializeForm
+
+  createDayplan(): FormGroup {
+    return this.fb.group({
+      'setstarttime': ['08:00:00', Validators.required],
+      'setendtime': ['09:00:00', Validators.required]
+    })
+  }
+
+  addDayplan() {
+    this.dayplanFormArray.push( this.createDayplan());
+  }
 
   ngOnInit() {
     this.loadSensorData();
@@ -95,11 +105,8 @@ export class SensorEditPage implements OnInit {
   }
   ionViewWillLoad() {
     console.log("ionViewDidLoad LightPage");
-
-    this.sensortypename = this.navParams.get("sensortype");
+    this.sensortypename = this.navParams.get("sensortypename");
     console.log("sensortypename:", this.sensortypename);
-
-    //this.loadSensorData();
   }
 
   loadSensorData() {
@@ -110,9 +117,7 @@ export class SensorEditPage implements OnInit {
     console.dir("light-oninit-sensor", this.sensor);
     console.dir("light-oninit-weekplan", this.weekplan);
   }
-  addDayplan() {
-    console.log("light-addDayplan");
-  }
+
   onUpdateToggle(event) {
     console.log("checked:", event.checked);
     if (event.checked) {

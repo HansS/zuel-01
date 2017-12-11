@@ -1,5 +1,5 @@
 <ion-header>
-    <h2>Header here</h2>
+    <h2>{{ sensortypename }}</h2>
 </ion-header>
 <ion-content>
     <form [formGroup]="weekplanForm">
@@ -53,33 +53,46 @@
 
 
         <!-- sensordays: FormGroup -->
-        <ion-slides formGroupName="sensordays">
+        <ion-slides>
 
-            <ion-slide *ngFor="let sd of weekplan.sensordays" formGroupName="sensorday">
+            <ion-slide *ngFor="let sd of weekplan.sensordays" >
+                <button ion-button (click)="addDayplan()">Add Dayplan</button>
                 <!-- day: FormControl -->
-                <ion-item>
-                    <ion-label>Day</ion-label>
-                    <ion-input formControlName="day"></ion-input>
-                </ion-item>
                 <!-- dayplans: FormArray    {setstarttime, setendtime, starttime, endtime} -->
                 <div *ngFor="let dayplan of dayplansFormArray.controls; let i = index;" formArrayName="dayplans">
                     <!-- starttime:  string;                         // 12:30 -->
-                    <ion-item>
-                        <ion-label>Start Time</ion-label>
-                        <ion-datetime displayFormat="HH:mm" [formControlName]="i"></ion-datetime>
-                    </ion-item>
+                    <div [formGroupName]="i">
+                        <ion-item>
+                            <ion-label>Day</ion-label>
+                            <ion-select formControlName="day">
+                                <ion-option value="Mo">Montag</ion-option>
+                                <ion-option value="Di">Dienstag</ion-option>
+                                <ion-option value="Mi">Mittwoch</ion-option>
+                                <ion-option value="Do">Donnerstag</ion-option>
+                                <ion-option value="Fr">Freitag</ion-option>
+                                <ion-option value="Sa">Samstag</ion-option>
+                                <ion-option value="So">Sonntag</ion-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Start Time</ion-label>
+                            <ion-datetime displayFormat="HH:mm" formControlName="setstarttime"></ion-datetime>
+                        </ion-item>
 
-                    <!-- endtime: string;                             // 20:45 -->
-                    <ion-item>
-                        <ion-label>End Time</ion-label>
-                        <ion-datetime displayFormat="HH:mm" [formControlName]="i"></ion-datetime>
-                    </ion-item>
+                        <!-- endtime: string;                             // 20:45 -->
+                        <ion-item>
+                            <ion-label>End Time</ion-label>
+                            <ion-datetime displayFormat="HH:mm" formControlName="setendtime"></ion-datetime>
+                        </ion-item>
+                    </div>
+                    <!--- formGroupName = "i" -->
                 </div>
+                <!--- formArrayName="dayplans" -->
             </ion-slide>
 
 
         </ion-slides>
-        <!---formGroupName="sensordays"  -->
+
 
 
     </form>

@@ -7,9 +7,9 @@ export interface WeekPlanType {
     displayname: string;
 }
 export interface WeekPlan {
-    weekplantype: WeekPlanType; // {daily, tàglich}, {weekly, wöchentlich}
+    weekplantype: WeekPlanType; // {typename: 'daily', displayname: 'tàglich'}, {weekly, wöchentlich}
     sensortypename: string;
-    plandatetime:string;
+    plandatetime?:Date;
     planname: string;
     setvalue: number;  
     offset: SensorOffset;                             //  Offset Type describes the offset values
