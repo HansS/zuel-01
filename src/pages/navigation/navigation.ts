@@ -32,4 +32,8 @@ export class NavigationPage {
   openWeekplan(){
     this.navCtrl.push('WeekplanPage', {'sensortypename': 'light'})
   }
-}
+  openDevice(){
+    this.navCtrl.push('DeviceListPage')
+  }
+
+} // class

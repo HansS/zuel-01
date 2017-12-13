@@ -1,21 +1,49 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Navigation</ion-title>
+    <ion-title text-center>Multi-Switch</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<ion-list>
-  <ion-item>
-    <button ion-button block  (click)="openBeleuchtung()" >Beleuchtung</button>
-    <button ion-button block  (click)="openHeizung()" >Heizung</button>
-    <button ion-button block  (click)="openKuehlgeraet()" >Kühlgerät</button>
-    <button ion-button block  (click)="openLuftbefeuchter()" >Luftbefeuchter</button>
-    <button ion-button block  (click)="openLufttrockner()" >Lufttrockner</button>
-    <button ion-button block  (click)="openWeekplan()" >Weekplan</button>
-  </ion-item>
-</ion-list>
+  <ion-card>
+
+    <ion-list>
+
+      <button ion-item block (click)="openDevice()">
+        <ion-icon name="wifi" item-start></ion-icon>
+        Gerät verbinden
+      </button>
+
+      <button ion-item block (click)="openBeleuchtung()">
+        <ion-icon name="bulb" item-start></ion-icon>
+        Beleuchtung einstellen
+      </button>
+
+      <button ion-item block (click)="openHeizung()">
+        <ion-icon name="thermometer" item-start></ion-icon>
+        Heizung einstellen
+      </button>
+      <button ion-item block (click)="openKuehlgeraet()">
+        <ion-icon name="cloud-outline" item-start></ion-icon>
+        Kühlgerät einstellen
+      </button>
+      <button ion-item block (click)="openLuftbefeuchter()">
+        <ion-icon name="download" item-start></ion-icon>
+        Luftbefeuchter einstellen
+      </button>
+      <button ion-item block (click)="openLufttrockner()">
+        <ion-icon name="cloud" item-start></ion-icon>
+        Lufttrockner
+      </button>
+      <button ion-item block (click)="openWeekplan()">
+        <ion-icon name="clock" item-start></ion-icon>
+        Zeitplan erstellen
+      </button>
+
+    </ion-list>
+  </ion-card>
+ 
 </ion-content>

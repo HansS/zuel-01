@@ -12,40 +12,72 @@
 
   <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
 
-    <ion-slide padding style="background: url('assets/imgs/beleuchtung.jpg')  no-repeat; background-size: 100%  100%"> 
+    <ion-slide padding style="background: url('assets/imgs/beleuchtung.jpg')  no-repeat; background-size: 100%  100%">
       <div style="margin-top:90%">
         <ion-list>
-          <ion-card style="background-color: lightblue" >
-          <ion-card-title> Zürcher Elektronik</ion-card-title>
+          <ion-card style="background-color: lightblue">
+            <ion-card-title> Zürcher Elektronik</ion-card-title>
             <ion-card-content>
               <p>Tobias Zürcher</p>
               <p>Elektronik Ingenieur und Inhaber</p>
             </ion-card-content>
-            
           </ion-card>
         </ion-list>
       </div>
     </ion-slide>
 
     <ion-slide>
-      <button ion-button block (click)="openNavigationPage()">Start</button>
-    </ion-slide>
-<!-- 
-    <ion-slide style="background: url('assets/imgs/luftbefeuchter.jpg') no-repeat; background-size: 90% 70%; top: 10%; opacity: 0.5">
-    <div style="margin-top:90% ">
-      <p>Schalten sie ihren Luftbefeuchter per Zeitplan und sie sorgen damit für ein angenehmes Raumklima.</p>
-      </div>  
+
+      <ion-card>
+        <button ion-item block (click)="openDevice()">
+          <ion-icon name="wifi" item-start></ion-icon>
+          Gerät verbinden
+        </button>
+      </ion-card>
+
+      <ion-card>
+        <button ion-item block (click)="openBeleuchtung()">
+          <ion-icon name="bulb" item-start></ion-icon>
+          Beleuchtung einstellen
+        </button>
+      </ion-card>
+      <ion-card>
+        <button ion-item block (click)="openHeizung()">
+          <ion-icon name="thermometer" item-start></ion-icon>
+          Heizung einstellen
+        </button>
+      </ion-card>
+      <ion-card>
+        <button ion-item block (click)="openKuehlgeraet()">
+          <ion-icon name="cloud-outline" item-start></ion-icon>
+          Kühlgerät einstellen
+        </button>
+      </ion-card>
+      <ion-card>
+
+        <button ion-item block (click)="openLuftbefeuchter()">
+          <ion-icon name="download" item-start></ion-icon>
+          Luftbefeuchter einstellen
+        </button>
+      </ion-card>
+
+      <ion-card>
+
+        <button ion-item block (click)="openLufttrockner()">
+          <ion-icon name="cloud" item-start></ion-icon>
+          Lufttrockner
+        </button>
+      </ion-card>
+
+      <ion-card>
+
+        <button ion-item block (click)="openWeekplan()">
+          <ion-icon name="clock" item-start></ion-icon>
+          Zeitplan erstellen
+        </button>
+      </ion-card>
+
     </ion-slide>
 
-     <ion-slide style="background: url('assets/imgs/heizung.jpg') no-repeat; background-size: 90% 70%; top: 10%"> 
-     <div style="margin-top:90%" >
-     <p>Schalten sie die Heizung genau dann ein wenn die Raumtemperatur unter den Wohlfühl Wert fällt.</p>
-    </div> 
-    </ion-slide>
-
-    <button (click)="skip()" id="skip">{{ skipMsg }} margin-top: 15px</button>
-     -->
   </ion-slides>
 </ion-content>
-
-  

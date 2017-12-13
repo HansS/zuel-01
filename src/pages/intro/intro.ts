@@ -35,6 +35,29 @@ export class IntroPage {
   constructor(public navCtrl: NavController) {
 
   }
+
+  openBeleuchtung(){
+    this.navCtrl.push('SensorEditPage', {'sensortypename': 'light'})
+  }
+  openHeizung(){
+    this.navCtrl.push('SensorEditPage', {'sensortypename': 'temperature-plus'})
+  }
+  openKuehlgeraet(){
+    this.navCtrl.push('SensorEditPage', {'sensortypename': 'temperature-minus'})
+  }
+  openLuftbefeuchter(){
+    this.navCtrl.push('SensorEditPage', {'sensortypename': 'humidity-plus'})
+  }
+  openLufttrockner(){
+    this.navCtrl.push('SensorEditPage', {'sensortypename': 'humidity-minus'})
+  }
+  openWeekplan(){
+    this.navCtrl.push('WeekplanPage', {'sensortypename': 'light'})
+  }
+  openDevice(){
+    this.navCtrl.push('DeviceListPage')
+  }
+
   openNavigationPage(){
     this.navCtrl.push('NavigationPage');
   }

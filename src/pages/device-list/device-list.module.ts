@@ -9,5 +9,6 @@ import { DeviceListPage } from './device-list';
   imports: [
     IonicPageModule.forChild(DeviceListPage),
   ],
+  exports: [ DeviceListPage ]
 })
 export class DeviceListPageModule {}

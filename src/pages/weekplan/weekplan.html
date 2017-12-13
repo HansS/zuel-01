@@ -53,46 +53,42 @@
 
 
         <!-- sensordays: FormGroup -->
-        <ion-slides>
 
-            <ion-slide *ngFor="let sd of weekplan.sensordays" >
-                <button ion-button (click)="addDayplan()">Add Dayplan</button>
-                <!-- day: FormControl -->
-                <!-- dayplans: FormArray    {setstarttime, setendtime, starttime, endtime} -->
-                <div *ngFor="let dayplan of dayplansFormArray.controls; let i = index;" formArrayName="dayplans">
-                    <!-- starttime:  string;                         // 12:30 -->
-                    <div [formGroupName]="i">
-                        <ion-item>
-                            <ion-label>Day</ion-label>
-                            <ion-select formControlName="day">
-                                <ion-option value="Mo">Montag</ion-option>
-                                <ion-option value="Di">Dienstag</ion-option>
-                                <ion-option value="Mi">Mittwoch</ion-option>
-                                <ion-option value="Do">Donnerstag</ion-option>
-                                <ion-option value="Fr">Freitag</ion-option>
-                                <ion-option value="Sa">Samstag</ion-option>
-                                <ion-option value="So">Sonntag</ion-option>
-                            </ion-select>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>Start Time</ion-label>
-                            <ion-datetime displayFormat="HH:mm" formControlName="setstarttime"></ion-datetime>
-                        </ion-item>
 
-                        <!-- endtime: string;                             // 20:45 -->
-                        <ion-item>
-                            <ion-label>End Time</ion-label>
-                            <ion-datetime displayFormat="HH:mm" formControlName="setendtime"></ion-datetime>
-                        </ion-item>
-                    </div>
-                    <!--- formGroupName = "i" -->
+        <button ion-button (click)="addDayplan()">Add Dayplan</button>
+        <ion-card *ngFor="let sd of weekplan.sensordays">
+            <!-- day: FormControl -->
+            <!-- dayplans: FormArray    {setstarttime, setendtime, starttime, endtime} -->
+            <div *ngFor="let dayplan of dayplansFormArray.controls; let i = index;" formArrayName="dayplans">
+                <!-- starttime:  string;                         // 12:30 -->
+                <div [formGroupName]="i">
+                    <ion-item>
+                        <ion-label>Day</ion-label>
+                        <ion-select formControlName="day">
+                            <ion-option value="Mo">Montag</ion-option>
+                            <ion-option value="Di">Dienstag</ion-option>
+                            <ion-option value="Mi">Mittwoch</ion-option>
+                            <ion-option value="Do">Donnerstag</ion-option>
+                            <ion-option value="Fr">Freitag</ion-option>
+                            <ion-option value="Sa">Samstag</ion-option>
+                            <ion-option value="So">Sonntag</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Start Time</ion-label>
+                        <ion-datetime displayFormat="HH:mm" formControlName="setstarttime"></ion-datetime>
+                    </ion-item>
+
+                    <!-- endtime: string;                             // 20:45 -->
+                    <ion-item>
+                        <ion-label>End Time</ion-label>
+                        <ion-datetime displayFormat="HH:mm" formControlName="setendtime"></ion-datetime>
+                    </ion-item>
                 </div>
-                <!--- formArrayName="dayplans" -->
-            </ion-slide>
-
-
-        </ion-slides>
-
+                <!--- formGroupName = "i" -->
+            </div>
+            <!--- formArrayName="dayplans" -->
+        </ion-card>
 
 
     </form>
