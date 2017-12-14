@@ -25,18 +25,18 @@ export class SensorService {
     new SensorType('temperature-high','Heizung','Heizung','Celsius','temperature',['high']),20,false,false,
     new WeekPlanType('weekly','wöchentlich'),
     'Heizung wöchentlich',
-    new WeekPlan('weekly','wöchentlich','power','Beleuchtung wöchentlich',
+    new WeekPlan('weekly','wöchentlich','power','Heizung wöchentlich',
     new Offset(30,true,'+','starttime'),
     [new DayPlan('Mo','08:00','09:00','08:00','09:00')]),
     false, new SensorValue('11.11.2017','0'),
     []),
 
-    // 3 - Kühgerät: Temperatur
+    // 3 - Kühlgerät: Temperatur
     new Sensor(3,'0000C',
-    new SensorType('termperature-low','Kühgerät','Kühgerät','Celsius','temperature',['low']),0,false,false,
+    new SensorType('temperature-low','Kühlgerät','Kühlgerät','Celsius','temperature',['low']),0,false,false,
     new WeekPlanType('weekly','wöchentlich'),
-    'Kühgerät wöchentlich',
-    new WeekPlan('weekly','wöchentlich','power','Beleuchtung wöchentlich',
+    'Kühlgerät wöchentlich',
+    new WeekPlan('weekly','wöchentlich','power','Kühlgerät wöchentlich',
     new Offset(30,true,'+','starttime'),
     [new DayPlan('Mo','08:00','09:00','08:00','09:00')]),
     false, new SensorValue('11.11.2017','0'),
