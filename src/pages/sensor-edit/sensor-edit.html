@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title> Sensor verwalten</ion-title>
+    <ion-title text-center> {{ sensor.sensortype.displayname}} verwalten</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,28 +14,42 @@
     <ion-list>
 
       <ion-item>
-        <ion-label>{{ sensor.sensortype.displayname}} ist eingeschaltet</ion-label>
-        <ion-toggle name="ison" formControlName="ison"></ion-toggle>
+        <ion-label *ngIf="sensor.ison" >{{ sensor.sensortype.displayname}} an</ion-label>
+        <ion-label *ngIf="!sensor.ison" >{{ sensor.sensortype.displayname}} aus</ion-label>
+        <!-- <ion-toggle name="ison" formControlName="ison"></ion-toggle> -->
       </ion-item>
 
       <ion-item>
+        <ion-label >{{ sensor.sensortype.displayname}} einschalten</ion-label>
+
+        <ion-toggle formControlName="isturnon"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="sensor.sensortype.typename !== 'power' " >
         <ion-label>{{ sensor.sensortype.displayname}} Sollwert</ion-label>
-        <ion-input name="sensorsetvalue" formControlName="sensorsetvalue"></ion-input>
+        <ion-input formControlName="sensorsetvalue"></ion-input>
+      </ion-item>
+
+      <ion-item formGroupName="sensorvalue">
+        <ion-label>{{ sensor.sensortype.displayname}} aktueller Wert</ion-label>
+        <ion-input formControlName="datetime"></ion-input>
+        <ion-input formControlName="value"></ion-input>
+      
       </ion-item>
 
       <ion-item>
-        <ion-label>Werte aufzeichnen</ion-label>
-        <ion-toggle name="islog" formControlName="islog"></ion-toggle>
+        <ion-label>{{sensor.sensortype.displayname }} aufzeichnen</ion-label>
+        <ion-toggle formControlName="islog"></ion-toggle>
       </ion-item>
 
       <ion-item>
         <ion-label>Mit Zeitplan</ion-label>
-        <ion-toggle name="isweekplan" formControlName="isweekplan"></ion-toggle>
+        <ion-toggle formControlName="isweekplan"></ion-toggle>
       </ion-item>
 
-      <ion-item>
+      <ion-item *ngIf="sensor.isweekplan" >
         <ion-label>Wiederholen</ion-label>
-        <ion-select name="scheduletype" formControlName="scheduletype">
+        <ion-select  formControlName="scheduletype">
           <ion-option value="daily">Täglich</ion-option>
           <ion-option value="weekly">Wöchentlich</ion-option>
         </ion-select>
@@ -43,7 +57,7 @@
 
     </ion-list>
 
-    <div formGroupName="weekplan">
+    <div formGroupName="weekplan" *ngIf="sensor.isweekplan" >
 
       <button ion-button (click)="addDayplan()">Add Dayplan</button>
       

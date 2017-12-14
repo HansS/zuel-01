@@ -48,16 +48,21 @@ displayname: string;
   initializeForm() {
     this.sensorEditForm = new FormGroup({
       ison: new FormControl(),
+      isturnon: new FormControl(),
       sensorsetvalue: new FormControl(),
-      scheduletype: new FormControl(),
-      isweekplan: new FormControl(),
+      sensorvalue: new FormGroup({
+        datetime: new FormControl(),
+        value: new FormControl()
+      }),
+      scheduletype: new FormControl(['weekly']),
+      isweekplan: new FormControl(['true']),
       islog: new FormControl(),
 
       weekplan: new FormGroup({
-        plandatetime: new FormControl(Date.now()),
-        planname: new FormControl(),
-        sensortypename: new FormControl(),
-        setvalue: new FormControl(),
+        plandatetime: new FormControl(['15.12.2017']),
+        planname: new FormControl('Zeitplan name eingeben'),
+        sensortypename: new FormControl([`${this.sensortypename}`]),
+        setvalue: new FormControl(['20']),
 
         offset: new FormGroup({
           minutes: new FormControl(),
@@ -82,13 +87,11 @@ displayname: string;
   addDayplan() {
     this.dayplanFormArray.push(this.createDayplan());
   }
-
+  
   ngOnInit() {
-    //this.loadSensorData();
-    // this.sensor = new Sensor(1,'',new SensorType(this.sensortypename,this.displayname,'devicename','unit'),0,false,false,new WeekPlanType('weekly','wöchentlich'), this.sensortypename + ' wöchentlich', new WeekPlan(this.sensortypename + ' weekly', this.sensortypename + 'wöchentlich',this.sensortypename,this.sensortypename + ' wöchentlich', new Offset(30,true,'+','starttime'),[new DayPlan('Mo','08:00', '09:00', '08:00', '09:00')] ),false,new SensorValue('15.12.2017','0'),[]);
-    this.sensor = this.service.createSensor(this.sensortypename);
     this.initializeForm();
     this.dayplanFormArray = this.getDayplanFormArrayReference();
+    this.sensor = this.service.createSensor(this.sensortypename);
   }
 
   getDayplanFormArrayReference(): FormArray {
@@ -100,20 +103,13 @@ displayname: string;
     return dpFormArray;
   }
   ionViewWillLoad() {
-    console.log("ionViewDidLoad LightPage");
     this.sensortypename = this.navParams.get("sensortypename");
+    console.log("ionViewDidLoad LightPage");
+    
     console.log("sensortypename:", this.sensortypename);
   }
-
-  loadSensorData() {
-    //this.sensor = this.service.getSensorData(this.sensortypename);
-    //this.weekplan = this.sensor.weekplan;
-
-    console.log("light-weekplan", this.weekplan);
-    console.dir("light-oninit-sensor", this.sensor);
-    console.dir("light-oninit-weekplan", this.weekplan);
+  ionViewWillEnter(){
   }
-
   onUpdateToggle(event) {
     console.log("checked:", event.checked);
     if (event.checked) {
@@ -131,11 +127,5 @@ displayname: string;
     this.dayplanFormArray.push(control);
   }
 
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad LightPage");
 
-    //this.sensortypename = this.navParams.get('sensortype');
-
-    //this.loadSensorData();
-  }
 } // class

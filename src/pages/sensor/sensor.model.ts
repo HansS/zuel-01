@@ -30,6 +30,7 @@ export class Sensor {
         public sensortype: SensorType,
         public  sensorsetvalue: number,
         public  ison: boolean,
+        public  isturnon: boolean,
         public isweekplan: boolean, 
         public weekplantype: WeekPlanType, 
         public weekplanname: string, 
