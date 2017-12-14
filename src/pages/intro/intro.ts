@@ -1,4 +1,3 @@
-import { NavigationPage } from '../navigation/navigation';
 import { Component, ViewChild, trigger, transition, style, state, animate, keyframes } from '@angular/core';
 import { NavController, Slides } from 'ionic-angular';
 //import { MainPage } from '../main/main';
@@ -51,9 +50,7 @@ export class IntroPage {
   openLufttrockner(){
     this.navCtrl.push('SensorEditPage', {'sensortypename': 'humidity-minus'})
   }
-  openWeekplan(){
-    this.navCtrl.push('WeekplanPage', {'sensortypename': 'light'})
-  }
+
   openDevice(){
     this.navCtrl.push('DeviceListPage')
   }

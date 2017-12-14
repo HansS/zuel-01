@@ -1,4 +1,3 @@
-import { NavigationPageModule } from '../pages/navigation/navigation.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -22,7 +21,6 @@ import { LogPageModule } from '../pages/log/log.module';
 import { AppinfoPageModule } from '../pages/appinfo/appinfo.module';
 import { SettingsPageModule } from './../pages/settings/settings.module';
 import { SensorEditPageModule } from '../pages/sensor-edit/sensor-edit.module';
-import { WeekplanPageModule } from '../pages/weekplan/weekplan.module';
 
 @NgModule({
   declarations: [
@@ -31,9 +29,7 @@ import { WeekplanPageModule } from '../pages/weekplan/weekplan.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NavigationPageModule,
     SensorEditPageModule,
-    WeekplanPageModule,
     DeviceListPageModule,
     DeviceDetailsPageModule,
     AppinfoPageModule,
