@@ -37,37 +37,49 @@
 
       <ion-card>
         <button ion-item block (click)="openBeleuchtung()">
-          <ion-icon name="bulb" item-start></ion-icon>
+          <ion-icon name="power" item-start></ion-icon>
           Beleuchtung einstellen
         </button>
       </ion-card>
 
       <ion-card>
-        <button ion-item block (click)="openHeizung()">
-          <ion-icon name="thermometer" item-start></ion-icon>
-          Heizung einstellen
-        </button>
+        <ion-item>
+          <button ion-item block (click)="openHeizung()">
+            <ion-icon name="thermometer"></ion-icon>
+            <ion-icon name="add"></ion-icon>
+            <span margin-left>Heizung einstellen</span>
+          </button>
+        </ion-item>
       </ion-card>
 
       <ion-card>
-        <button ion-item block (click)="openKuehlgeraet()">
-          <ion-icon name="cloud-outline" item-start></ion-icon>
-          Kühlgerät einstellen
-        </button>
+        <ion-item>
+          <button ion-item block (click)="openKuehlgeraet()">
+            <ion-icon name="thermometer"></ion-icon>
+            <ion-icon name="remove"></ion-icon>
+            <span margin-left>Kühlgerät einstellen</span>
+          </button>
+        </ion-item>
       </ion-card>
 
       <ion-card>
-        <button ion-item block (click)="openLuftbefeuchter()">
-          <ion-icon name="download" item-start></ion-icon>
-          Luftbefeuchter einstellen
-        </button>
+        <ion-item>
+          <button ion-item block (click)="openLuftbefeuchter()">
+            <ion-icon name="cloud" ></ion-icon>
+            <ion-icon name="add"></ion-icon>
+            <span margin-left>Luftbefeuchter einstellen</span>
+          </button>
+        </ion-item>
       </ion-card>
 
       <ion-card>
-        <button ion-item block (click)="openLufttrockner()">
-          <ion-icon name="cloud" item-start></ion-icon>
-          Lufttrockner
-        </button>
+        <ion-item>
+          <button ion-item block (click)="openLufttrockner()">
+            <ion-icon name="cloud-outline" ></ion-icon>
+            <ion-icon name="remove"></ion-icon>
+            <span margin-left>Lufttrockner einstellen</span>
+          </button>
+        </ion-item>
       </ion-card>
 
     </ion-slide>

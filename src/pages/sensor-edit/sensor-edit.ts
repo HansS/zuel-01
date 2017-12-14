@@ -85,7 +85,8 @@ displayname: string;
 
   ngOnInit() {
     //this.loadSensorData();
-    this.sensor = new Sensor(1,'',new SensorType(this.sensortypename,this.displayname,'devicename','unit'),0,false,false,new WeekPlanType('weekly','wöchentlich'), this.sensortypename + ' wöchentlich', new WeekPlan(this.sensortypename + ' weekly', this.sensortypename + 'wöchentlich',this.sensortypename,this.sensortypename + ' wöchentlich', new Offset(30,true,'+','starttime'),[new DayPlan('Mo','08:00', '09:00', '08:00', '09:00')] ),false,new SensorValue('15.12.2017','0'),[]);
+    // this.sensor = new Sensor(1,'',new SensorType(this.sensortypename,this.displayname,'devicename','unit'),0,false,false,new WeekPlanType('weekly','wöchentlich'), this.sensortypename + ' wöchentlich', new WeekPlan(this.sensortypename + ' weekly', this.sensortypename + 'wöchentlich',this.sensortypename,this.sensortypename + ' wöchentlich', new Offset(30,true,'+','starttime'),[new DayPlan('Mo','08:00', '09:00', '08:00', '09:00')] ),false,new SensorValue('15.12.2017','0'),[]);
+    this.sensor = this.service.createSensor(this.sensortypename);
     this.initializeForm();
     this.dayplanFormArray = this.getDayplanFormArrayReference();
   }
