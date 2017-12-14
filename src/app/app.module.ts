@@ -12,10 +12,6 @@ import { DeviceDetailsPageModule } from './../pages/device-details/device-detail
 
 // sensors: service, light, humidity, temperature, fan
 import { SensorService } from '../pages/sensor/sensor.service';
-import { LightPageModule } from '../pages/light/light.module';
-import { HumidityPageModule } from '../pages/humidity/humidity.module';
-import { TemperaturePageModule } from './../pages/temperature/temperature.module';
-import { FanPageModule } from '../pages/fan/fan.module';
 
 import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -25,7 +21,6 @@ import { IntroPageModule } from '../pages/intro/intro.module';
 import { LogPageModule } from '../pages/log/log.module';
 import { AppinfoPageModule } from '../pages/appinfo/appinfo.module';
 import { SettingsPageModule } from './../pages/settings/settings.module';
-import { CoolerPageModule } from '../pages/cooler/cooler.module';
 import { SensorEditPageModule } from '../pages/sensor-edit/sensor-edit.module';
 import { WeekplanPageModule } from '../pages/weekplan/weekplan.module';
 
@@ -45,11 +40,6 @@ import { WeekplanPageModule } from '../pages/weekplan/weekplan.module';
     SettingsPageModule,
     IntroPageModule,
     LogPageModule,
-    LightPageModule,
-    TemperaturePageModule,
-    HumidityPageModule,
-    FanPageModule,
-    CoolerPageModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

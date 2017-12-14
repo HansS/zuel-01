@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{sensortypename }} verwalten</ion-title>
+    <ion-title> Sensor verwalten</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -41,43 +41,41 @@
         </ion-select>
       </ion-item>
 
-
-      <div formGroupName="weekplan">
-
-        <ion-slides formGroupName="sensordays">
-
-          <button ion-button (click)="addDayplan()">Add Dayplan</button>
-
-          <ion-slide *ngFor="let sd of weekplan.sensordays" >
-              {{ sd.day }}<ion-input type="text" formControlName="day" ></ion-input>
-            <button ion-button (click)="onAddStarttime()">Add Starttime</button>
-            
-            
-              <div formArrayName="dayplans" *ngFor="let starttimeControl of dayplanFormArray.controls; let i = index">
-                  <div [formGroupName]="i">
-                    <ion-item>
-                      <ion-label>Startzeit</ion-label>
-                      <ion-datetime displayFormat="HH:mm" [formControlName]="setstarttime"></ion-datetime>
-                    </ion-item>
-                    <ion-item>
-                      <ion-label>Startzeit</ion-label>
-                      <ion-datetime displayFormat="HH:mm" [formControlName]="setendtime"></ion-datetime>
-                    </ion-item>
-                  </div> <!--- formGroupName -->
-              </div><!--- formArrayName -->
-            
-            <!--- formArrayName="dayplans" -->
-
-
-          </ion-slide>
-          <!--- formGroupName="sensordays" slide -->
-
-        </ion-slides>
-
-      </div>
-      <!--- formGroupName="weekplan" -->
-
     </ion-list>
+
+    <div formGroupName="weekplan">
+
+      <button ion-button (click)="addDayplan()">Add Dayplan</button>
+      
+      <ion-card formArrayName="dayplans" *ngFor="let starttimeControl of dayplanFormArray.controls; let i = index">
+        <div [formGroupName]="i">
+          <ion-list>
+            <ion-item>
+              <ion-label>Day</ion-label>
+              <ion-input type="text" formControlName="day"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Startzeit</ion-label>
+              <ion-datetime displayFormat="HH:mm" formControlName="setstarttime"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Startzeit</ion-label>
+              <ion-datetime displayFormat="HH:mm" formControlName="setendtime"></ion-datetime>
+            </ion-item>
+          </ion-list>
+
+          </div><!--- formGroupName="i" -->
+
+        </ion-card>
+        <!--- formArrayName="dayplans" -->
+
+
+    </div>
+    <!--- formGroupName="weekplan" -->
+
+
 
 
     <button ion-button (click)="saveWeekplan()">Save Weekplan</button>

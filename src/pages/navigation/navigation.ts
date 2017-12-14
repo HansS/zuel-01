@@ -30,7 +30,7 @@ export class NavigationPage {
     this.navCtrl.push('SensorEditPage', {'sensortypename': 'humidity-minus'})
   }
   openWeekplan(){
-    this.navCtrl.push('WeekplanPage', {'sensortypename': 'light'})
+    this.navCtrl.push('WeekplanPage', {'sensortypename': 'light', 'displayname': 'Beleuchtung'})
   }
   openDevice(){
     this.navCtrl.push('DeviceListPage')

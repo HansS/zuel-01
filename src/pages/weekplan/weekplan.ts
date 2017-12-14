@@ -1,3 +1,4 @@
+import { Sensor } from './../sensor/sensor.model';
 import {
   FormBuilder,
   FormArray,
@@ -20,8 +21,13 @@ import { DayPlan } from "./dayplan.interface";
   templateUrl: "weekplan.html"
 })
 export class WeekplanPage implements OnInit {
-  sensorId: number;
-  sensortypename: string;
+  // sensor
+sensor: Sensor;
+
+// paramValues:  sensortypename, displayname
+sensortypename: string;
+displayname: string;
+
   // weekplan with sensordays : 'Mo', 'Di', ... 'So'
   weekplan: WeekPlan;
   sensordays: SensorDay[];
@@ -43,9 +49,7 @@ export class WeekplanPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.weekplan = this.service.getSensorData("light").weekplan;
-    this.sensordays = this.weekplan.sensordays;
-    console.log("sensordays: ", this.sensordays);
+   // this.sensor = this.service.getSensors(this.sensortypename);
 
     this.initializeForm();
   }
@@ -71,6 +75,7 @@ export class WeekplanPage implements OnInit {
 
   ionViewWillEnter() {
     this.sensortypename = this.navParams.get("sensortypename");
+    this.displayname = this.navParams.get("displayname");
   }
 
   setDayplanFormGroupReference() {
