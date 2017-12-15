@@ -2,7 +2,7 @@ import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
 
 import { Device } from './device.interface';
-import { Sensor } from '../sensor/sensor.interface';
+import { Sensor } from '../sensor/sensor.model';
 
 @IonicPage()
 @Component({

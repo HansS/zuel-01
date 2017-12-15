@@ -74,6 +74,10 @@ displayname: string;
         dayplans: this.fb.array([this.createDayplan()])
       }) // weekplan FormGroup
     }); // sensorEditForm;
+
+    // set initial data for isweakplan -> so weakplan formgroup is shown
+    //                                                       isweekplan
+
   } // initializeForm
 
   createDayplan(): FormGroup {
@@ -90,8 +94,18 @@ displayname: string;
   
   ngOnInit() {
     this.initializeForm();
+
+    console.dir('sensorEditForm',this.sensorEditForm.controls);
+    
     this.dayplanFormArray = this.getDayplanFormArrayReference();
+
     this.sensor = this.service.createSensor(this.sensortypename);
+    console.dir('sensor data model',this.sensor);
+    
+    let iswp = this.sensorEditForm.get('isweekplan');
+    iswp.valueChanges.subscribe( val => console.log);
+    iswp.setValue(true);
+
   }
 
   getDayplanFormArrayReference(): FormArray {

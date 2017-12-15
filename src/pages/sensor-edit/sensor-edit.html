@@ -47,7 +47,7 @@
         <ion-toggle formControlName="isweekplan"></ion-toggle>
       </ion-item>
 
-      <ion-item *ngIf="sensor.isweekplan" >
+      <ion-item>
         <ion-label>Wiederholen</ion-label>
         <ion-select  formControlName="scheduletype">
           <ion-option value="daily">Täglich</ion-option>
@@ -57,10 +57,9 @@
 
     </ion-list>
 
-    <div formGroupName="weekplan" *ngIf="sensor.isweekplan" >
+    <button ion-button (click)="addDayplan()">Add Dayplan</button>
 
-      <button ion-button (click)="addDayplan()">Add Dayplan</button>
-      
+    <div formGroupName="weekplan">
       <ion-card formArrayName="dayplans" *ngFor="let starttimeControl of dayplanFormArray.controls; let i = index">
         <div [formGroupName]="i">
           <ion-list>
@@ -95,5 +94,5 @@
     <button ion-button (click)="saveWeekplan()">Save Weekplan</button>
   </form>
 
-  {{sensorEditForm.value | json }}
+  <!-- {{sensorEditForm.value | json }} -->
 </ion-content>

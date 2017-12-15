@@ -1,4 +1,4 @@
-import { Sensor } from './../sensor/sensor.model';
+import { Sensor, WeekPlan, DayPlan } from './../sensor/sensor.model';
 import {
   FormBuilder,
   FormArray,
@@ -11,9 +11,7 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 import days from "./days.data";
 
 import { SensorService } from "../sensor/sensor.service";
-import { SensorDay } from "../sensor/sensorday.interface";
-import { WeekPlan } from "./weekplan.interface";
-import { DayPlan } from "./dayplan.interface";
+
 
 @IonicPage()
 @Component({
@@ -30,11 +28,11 @@ displayname: string;
 
   // weekplan with sensordays : 'Mo', 'Di', ... 'So'
   weekplan: WeekPlan;
-  sensordays: SensorDay[];
+  
 
   // Day
   // days : import from days.data.ts
-  sensorday: SensorDay;
+  
   dayplans: DayPlan[];
   dayplansFormArray: FormArray;
 
@@ -110,7 +108,6 @@ displayname: string;
   ionViewDidLoad() {
     console.log("ionViewDidLoad weekplanEditPage");
     console.log("weekplan-edit: weekplan:", this.weekplan);
-    console.log("weekplan-edit: sensordays:", this.sensordays);
   }
   savePlantime() {
     console.log("weekplan-edit:savePlantime");
