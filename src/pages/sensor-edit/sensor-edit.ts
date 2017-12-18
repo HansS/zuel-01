@@ -1,3 +1,6 @@
+import { weekday } from './../weekplan/weekdays.data';
+import weekdays  from './../weekplan/weekdays.data';
+
 import { Sensor, SensorType,SensorValue, WeekPlanType, WeekPlan, Offset, DayPlan } from "./../sensor/sensor.model";
 import { Component, OnInit } from "@angular/core";
 
@@ -32,10 +35,11 @@ displayname: string;
   sensortype: SensorType;
 
   // sensor weekplan FormGroup
+  days: weekday[];
   weekplan: WeekPlan;
 
   // dayplans
-  dayplans: DayPlan[] = [new DayPlan("Mo", "08:00", "09:00", "08:00", "09:00")];
+  dayplans: DayPlan[] = [new DayPlan("Mo", "08:00", "08:00","Mo", "09:00", "09:00")];
   dayplanFormArray: FormArray;
 
   constructor(
@@ -43,7 +47,11 @@ displayname: string;
     private fb: FormBuilder,
     private navParams: NavParams,
     private service: SensorService
-  ) {}
+  ) {
+    this.days = weekdays;
+    console.log('weekdays', this.days);
+    
+  }
 
   initializeForm() {
     this.sensorEditForm = new FormGroup({
@@ -58,18 +66,19 @@ displayname: string;
       isweekplan: new FormControl(['true']),
       islog: new FormControl(),
 
+      offset: new FormGroup({
+        minutes: new FormControl(),
+        israndom: new FormControl(),
+        offsettype: new FormControl(),
+        settimetype: new FormControl()
+      }), // weekplan offset FormGroup
+      
       weekplan: new FormGroup({
         plandatetime: new FormControl(['15.12.2017']),
         planname: new FormControl('Zeitplan name eingeben'),
         sensortypename: new FormControl([`${this.sensortypename}`]),
         setvalue: new FormControl(['20']),
 
-        offset: new FormGroup({
-          minutes: new FormControl(),
-          israndom: new FormControl(),
-          offsettype: new FormControl(),
-          settimetype: new FormControl()
-        }), // weekplan offset FormGroup
 
         dayplans: this.fb.array([this.createDayplan()])
       }) // weekplan FormGroup
@@ -82,9 +91,10 @@ displayname: string;
 
   createDayplan(): FormGroup {
     return this.fb.group({
-      day: ['Mo', Validators.required],
+      startday: ['Mo', Validators.required],
       setstarttime: ["08:00:00", Validators.required],
-      setendtime: ["09:00:00", Validators.required]
+      endday: ['Mo'],
+      setendtime: ["09:00:00"]
     });
   }
 
@@ -99,7 +109,8 @@ displayname: string;
     
     this.dayplanFormArray = this.getDayplanFormArrayReference();
 
-    this.sensor = this.service.createSensor(this.sensortypename);
+    let snsr: Sensor = this.service.createSensor(this.sensortypename);
+    this.sensor = snsr;
     console.dir('sensor data model',this.sensor);
     
     let iswp = this.sensorEditForm.get('isweekplan');

@@ -1,26 +1,56 @@
-
+ 
 export class SensorType {
-    constructor(public typename: string,public  displayname: string, public devicename: string, public unit: string, public param?: string, public paramvalues?: string[]){}
+    constructor(
+        public typename: string,
+        public  displayname: string, 
+        public devicename: string, 
+        public unit: string, 
+        public param?: string, 
+        public paramvalues?: string[]){}
 }
 
 export class SensorValue {
-  constructor(  public datetime: string, public value: string){  }
+  constructor(  
+      public datetime: string, 
+      public value: string){  }
 }
 
 export class WeekPlanType {
-    constructor(public typename: string, public displayname: string){}
+    constructor(
+        public typename: string, 
+        public displayname: string){}
 }
 
 export class Offset {
-    constructor(public minutes: number, public israndom: boolean, public offsettype: string, public settimetype: string){}
+    constructor(
+        public minutes: number, 
+        public israndom: boolean, 
+        public offsettype: string, 
+        public settimetype: string){}
 }
 
 export class WeekPlan {
-    constructor(typename: string, displayname: string, sensortypename: string, planname: string, offset: Offset, dayplans: DayPlan[]){}
+    constructor(
+        typename: string, 
+        displayname: string, 
+        sensortypename: string, 
+        planname: string, offset: Offset, 
+        dayplans: DayPlan[]){}
 }
 
 export class DayPlan {
-    constructor(day: string, setstarttime: string, setendtime: string, starttime: string, endtime: string){}
+    constructor(
+        // startday
+        startday: string, 
+        setstarttime: string, 
+        starttime: string, 
+        // endday
+        endday: string,
+        setendtime: string, 
+        endtime: string,
+
+    ){}
+
 }
 
 export class Sensor {

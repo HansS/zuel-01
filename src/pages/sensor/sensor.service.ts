@@ -37,7 +37,7 @@ export class SensorService {
         "power",
         "Beleuchtung wöchentlich",
         new Offset(30, true, "+", "starttime"),
-        [new DayPlan("Mo", "08:00", "09:00", "08:00", "09:00")]
+        [new DayPlan("Mo", "08:00", "08:00","Mo", "09:00", "09:00")]
       ),
       false,
       new SensorValue("11.11.2017", "0"),
@@ -67,7 +67,7 @@ export class SensorService {
         "power",
         "Heizung wöchentlich",
         new Offset(30, true, "+", "starttime"),
-        [new DayPlan("Mo", "08:00", "09:00", "08:00", "09:00")]
+        [new DayPlan("Mo", "08:00", "08:00","Mo", "09:00", "09:00")]
       ),
       false,
       new SensorValue("11.11.2017", "0"),
@@ -98,7 +98,7 @@ export class SensorService {
         "power",
         "Kühlgerät wöchentlich",
         new Offset(30, true, "+", "starttime"),
-        [new DayPlan("Mo", "08:00", "09:00", "08:00", "09:00")]
+        [new DayPlan("Mo", "08:00", "08:00","Mo", "09:00", "09:00")]
       ),
       false,
       new SensorValue("11.11.2017", "0"),
@@ -130,7 +130,7 @@ export class SensorService {
         "humidity-high",
         "Luftbefeuchter wöchentlich",
         new Offset(30, true, "+", "starttime"),
-        [new DayPlan("Mo", "08:00", "09:00", "08:00", "09:00")]
+        [new DayPlan("Mo", "08:00", "08:00","Mo", "09:00", "09:00")]
       ),
       false,
       new SensorValue("11.11.2017", "0"),
@@ -160,7 +160,7 @@ export class SensorService {
         "humidity-low",
         "Luftbefeuchter wöchentlich",
         new Offset(30, true, "+", "starttime"),
-        [new DayPlan("Mo", "08:00", "09:00", "08:00", "09:00")]
+        [new DayPlan("Mo", "08:00", "08:00","Mo", "09:00", "09:00")]
       ),
       false,
       new SensorValue("11.11.2017", "0"),
@@ -177,170 +177,35 @@ export class SensorService {
 
   createSensor(typename: string): Sensor {
     let snsr: Sensor;
-    switch (typename) {
-      case "power":
-        snsr = new Sensor(
-          1,
-          "0000A",
-          new SensorType(
-            "power",
-            "Beleuchtung",
-            "Beleuchtung",
-            "Watt",
-            "power",
-            ["on", "off"]
-          ),
-          0,
-          false,
-          false,
-          false,
-          new WeekPlanType("weekly", "wöchentlich"),
-          "Beleuchtung wöchentlich",
-          new WeekPlan(
-            "weekly",
-            "wöchentlich",
-            "power",
-            "Beleuchtung wöchentlich",
-            new Offset(30, true, "+", "starttime"),
-            [new DayPlan("Mo", "08:00", "09:00", "08:00", "09:00")]
-          ),
-          false,
-          new SensorValue("11.11.2017", "0"),
-          []
-        );
-        break;
-
-      case "temperature-high":
-        snsr = new Sensor(
-          2,
-          "0000B",
-          new SensorType(
-            "temperature-high",
-            "Heizung",
-            "Heizung",
-            "Celsius",
-            "temperature",
-            ["high"]
-          ),
-          20,
-          false,
-          false,
-          false,
-          new WeekPlanType("weekly", "wöchentlich"),
-          "Heizung wöchentlich",
-          new WeekPlan(
-            "weekly",
-            "wöchentlich",
-            "power",
-            "Heizung wöchentlich",
-            new Offset(30, true, "+", "starttime"),
-            [new DayPlan("Mo", "08:00", "09:00", "08:00", "09:00")]
-          ),
-          false,
-          new SensorValue("11.11.2017", "0"),
-          []
-        );
-        break;
-
-      case "temperature-low":
-        snsr = new Sensor(
-          3,
-          "0000C",
-          new SensorType(
-            "temperature-low",
-            "Kühlgerät",
-            "Kühlgerät",
-            "Celsius",
-            "temperature",
-            ["low"]
-          ),
-          0,
-          false,
-          false,
-          true,
-          new WeekPlanType("weekly", "wöchentlich"),
-          "Kühlgerät wöchentlich",
-          new WeekPlan(
-            "weekly",
-            "wöchentlich",
-            "power",
-            "Kühlgerät wöchentlich",
-            new Offset(30, true, "+", "starttime"),
-            [new DayPlan("Mo", "08:00", "09:00", "08:00", "09:00")]
-          ),
-          false,
-          new SensorValue("11.11.2017", "0"),
-          []
-        );
-        break;
-
-      case "humidity-high":
-        snsr = new Sensor(
-          4,
-          "0000D",
-          new SensorType(
-            "humidity-high",
-            "Luftbefeuchter",
-            "Luftbefeuchter",
-            "%RH",
-            "humidity",
-            ["high"]
-          ),
-          0,
-          false,
-          false,
-          true,
-          new WeekPlanType("weekly", "wöchentlich"),
-          "Luftbefeuchter wöchentlich",
-          new WeekPlan(
-            "weekly",
-            "wöchentlich",
-            "humidity-high",
-            "Luftbefeuchter wöchentlich",
-            new Offset(30, true, "+", "starttime"),
-            [new DayPlan("Mo", "08:00", "09:00", "08:00", "09:00")]
-          ),
-          false,
-          new SensorValue("11.11.2017", "0"),
-          []
-        );
-        break;
-
-      case "humidity-low":
-        snsr = new Sensor(
-          5,
-          "0000E",
-          new SensorType(
-            "humidity-low",
-            "Lufttrockner",
-            "Lufttrockner",
-            "%RH",
-            "humidity",
-            ["low"]
-          ),
-          0,
-          false,
-          false,
-          true,
-          new WeekPlanType("weekly", "wöchentlich"),
-          "Lufttrockner wöchentlich",
-          new WeekPlan(
-            "weekly",
-            "wöchentlich",
-            "humidity-low",
-            "Luftbefeuchter wöchentlich",
-            new Offset(30, true, "+", "starttime"),
-            [new DayPlan("Mo", "08:00", "09:00", "08:00", "09:00")]
-          ),
-          false,
-          new SensorValue("11.11.2017", "0"),
-          []
-        );
-        break;
-
-      default:
-        break;
-    }
+    snsr = new Sensor(
+      1,
+      "0000A",
+      new SensorType(
+        "power",
+        "Beleuchtung",
+        "Beleuchtung",
+        "Watt",
+        "power",
+        ["on", "off"]
+      ),
+      0,
+      false,
+      false,
+      false,
+      new WeekPlanType("weekly", "wöchentlich"),
+      "Beleuchtung wöchentlich",
+      new WeekPlan(
+        "weekly",
+        "wöchentlich",
+        "power",
+        "Beleuchtung wöchentlich",
+        new Offset(30, true, "+", "starttime"),
+        [new DayPlan("Mo", "08:00", "08:00","Mo", "09:00", "09:00")]
+      ),
+      false,
+      new SensorValue("11.11.2017", "0"),
+      []
+    )
     return snsr;
   }
 } // class

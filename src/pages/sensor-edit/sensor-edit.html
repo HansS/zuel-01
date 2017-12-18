@@ -42,6 +42,27 @@
         <ion-toggle formControlName="islog"></ion-toggle>
       </ion-item>
 
+      
+        <ion-list formGroupName="offset">
+          <ion-item>
+            <ion-label>Minuten veschieben</ion-label>
+            <ion-input type="number" formControlName="minutes"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>zufällig veschieben</ion-label>
+            <ion-toggle  formControlName="israndom"></ion-toggle>
+          </ion-item>
+          <ion-item> 
+            <ion-label>nach vorne / hinten veschieben  </ion-label>
+            <ion-input type="text" formControlName="offsettype"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>an Start/Ende veschieben</ion-label>
+            <ion-input type="text" formControlName="settimetype"></ion-input>
+          </ion-item>
+        </ion-list>
+      
+
       <ion-item>
         <ion-label>Mit Zeitplan</ion-label>
         <ion-toggle formControlName="isweekplan"></ion-toggle>
@@ -64,17 +85,29 @@
         <div [formGroupName]="i">
           <ion-list>
             <ion-item>
-              <ion-label>Day</ion-label>
-              <ion-input type="text" formControlName="day"></ion-input>
+              <ion-label>Start Tag</ion-label>
+              <!-- <ion-input type="text" formControlName="startday"></ion-input> -->
+              <ion-select  formControlName="startday">
+                  <ion-option>Tag auswählen</ion-option>
+                  <ion-option *ngFor="let day of days" value={{day.daynumber}} >{{ day.dayname }}</ion-option>
+                </ion-select>
             </ion-item>
-
+            
             <ion-item>
               <ion-label>Startzeit</ion-label>
               <ion-datetime displayFormat="HH:mm" formControlName="setstarttime"></ion-datetime>
             </ion-item>
-
+            
             <ion-item>
-              <ion-label>Startzeit</ion-label>
+              <ion-label>End Tg</ion-label>
+              <!-- <ion-input type="text" formControlName="endday"></ion-input> -->
+              <ion-select  formControlName="endday">
+                  <ion-option>Tag auswählen</ion-option>
+                  <ion-option *ngFor="let day of days" value={{day.daynumber}} >{{ day.dayname }}</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Endzeit</ion-label>
               <ion-datetime displayFormat="HH:mm" formControlName="setendtime"></ion-datetime>
             </ion-item>
           </ion-list>
